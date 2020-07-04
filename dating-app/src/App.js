@@ -1,8 +1,8 @@
 import React from 'react';
-import Form from './Form.js'
 import Profile from './Profile.js'
 import NavBar from './nav.js'
 import LogIn from './login_signup.js'
+// const json = require("./history (1).json")
 
 class App extends React.Component {
   
@@ -12,7 +12,7 @@ class App extends React.Component {
   
   render() {
 
-    if (this.state.loggedIn){
+    if (!this.state.loggedIn){
       return (
         <div>
           <LogIn/>
