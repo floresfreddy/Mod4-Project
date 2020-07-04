@@ -5,6 +5,7 @@ import NavBar from './NavBar.js'
 import LogIn from './login.js'
 import SignUp from './SignUp.js'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import './styles.css'
 
 class App extends React.Component {
   

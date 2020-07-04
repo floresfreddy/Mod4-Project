@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+import './styles.css'
 
 function NavBar(){
 
@@ -8,7 +9,7 @@ function NavBar(){
     }
     
     return(
-    <div> 
+    <div className="signup"> 
         <div className="item">
         <h2 className="ui header">
             <div className="content">
