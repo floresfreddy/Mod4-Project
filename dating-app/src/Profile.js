@@ -1,5 +1,6 @@
 import React from 'react';
-import Form from 'Form.js';
+import Form from './Form.js';
+import Matches from './Matches.js'
 
 class Profile extends React.Component {
   render() {

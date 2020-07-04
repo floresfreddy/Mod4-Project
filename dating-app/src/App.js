@@ -1,8 +1,10 @@
 import React from 'react';
 import Form from './Form.js'
 import Profile from './Profile.js'
-import NavBar from './nav.js'
-import LogIn from './login_signup.js'
+import NavBar from './NavBar.js'
+import LogIn from './login.js'
+import SignUp from './SignUp.js'
+import {BrowserRouter, Route, Switch} from 'react-router-dom'
 
 class App extends React.Component {
   
@@ -10,25 +12,26 @@ class App extends React.Component {
     loggedIn: true 
   }
   
-  render() {
+  render(){
 
-    if (this.state.loggedIn){
-      return (
-        <div>
-          <LogIn/>
-        </div>
-      )
-    }
-    else{
-      return(
-      <div>
+    return (
+      <BrowserRouter>
+    <div>
         <NavBar />
-        <Profile /> 
-      </div>
-      )
-    }
-    
-  }
+        <Switch>
+
+        <Route path="/login" component={LogIn} />
+
+        <Route path="/signup" component={SignUp} />
+
+        </Switch>
+        
+
+    </div>
+    </BrowserRouter>
+
+       
+    )};
 }
 
 export default App;
