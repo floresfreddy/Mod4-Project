@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import "./styles.css"
 
 class SignUp extends Component{
 
@@ -29,15 +30,39 @@ class SignUp extends Component{
    
     render(){
         return(
-        <div>
-            <h2>Signup</h2>
+        <div className="signup">
+            <img src="./urban.jpg"></img>
+
+
+
+            <div class="form-box">
+                <div class="form-logo">
+                    {/* <p class="text-center"><img src="img/logo.png" alt="logo"></p> */}
+                </div>
+                <form>
+                    <input type="text" class="form-control" name="username" placeholder="Username" onChange={(e) => this.handleChange(e)}/>
+                    <input type="password" class="form-control" name="password" onChange={(e) => this.handleChange(e)}/>
+                    <input type="checkbox"/> Save Password
+                    <input type="submit" class="btn btn-social" value="LOGIN"/>
+                </form>
+                <a href="#" class="login-action" title="Forgot password">
+                    <p>Forgot your password?</p>
+                </a>
+                <a href="signin.html" class="login-action" title="Signi in">
+                    <p>New User?</p>
+                </a>
+            </div>
+            
+
+
+            {/* <h2>Signup</h2>
             <form onSubmit={(e) => this.signUp(e)}>
             <label>UserName</label>
             <input name="username" type="text" onChange={(e) => this.handleChange(e)}/>
             <label>Password</label>
             <input name="password" type="password" onChange={(e) => this.handleChange(e)}/>
             <input type="submit"/>
-            </form>
+            </form> */}
         </div>
         )
     }

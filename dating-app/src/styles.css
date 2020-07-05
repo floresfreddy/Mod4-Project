@@ -1,3 +1,25 @@
 .signup{
-    background-image:  url("urban.jpg");
+    background-image: url("urban.jpg");
+}
+
+body{
+    background-image: url("urban.jpg");
+}
+
+.bg-img{
+   
+    background-image: url("urban.jpg");
+    min-height: 1000px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.logo{
+    width:400px;
+}
+
+.Login_Div{
+    padding: 300px;
 }
