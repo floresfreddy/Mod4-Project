@@ -8,13 +8,11 @@ import {
     Segment,
     Image,
   } from 'semantic-ui-react';
-  import { BrowserRouter as Router, Route, NavLink, Link, Redirect} from 'react-router-dom';
+  import { BrowserRouter as NavLink, withRouter } from 'react-router-dom';
   import Profile from './Profile.js'
 
 class Login extends Component{
-    state = { 
-        redirect: "/profile"
-     };
+  
 
     handleChange = (e) => {
         // debugger
@@ -23,10 +21,13 @@ class Login extends Component{
         })
     }
 
-  
+    logout = () => {
+        localStorage.clear()
+    }
 
     logIn = (e) => {
         e.preventDefault()
+        
 
         fetch("http://localhost:3000/api/v1/login", {
             method: "POST",
@@ -41,9 +42,10 @@ class Login extends Component{
         .then(res =>  res.json())
         .then(userInfo => 
             {
-            localStorage.token = userInfo.token 
+            localStorage.token = userInfo.token
         }
         )
+        this.props.history.push("/profile");
     }
    
     render(){
@@ -65,7 +67,7 @@ class Login extends Component{
                     <img className="logo" src={require('./logo.png')}></img>
               
             <Segment>
-                <Form onSubmit={(e) => this.logIn(e)} size="large">
+                <Form size="large"  onSubmit={(e) => this.logIn(e)}>
                     <Form.Input
                         fluid
                         icon="user"
@@ -83,19 +85,23 @@ class Login extends Component{
                         name="password"
                         onChange={(e) => this.handleChange(e)}
                     />
-                    <NavLink
+                    {/* <NavLink
                         to="/profile"
                         exact
                         
                         activeStyle={{
                             background: 'darkblue'
                         }}
-                    >
-                    <Button color="gray" fluid size="large" onClick={this.reroute}>
+                    > */}
+                    <Button color="gray" fluid size="large">
                         Login
                     </Button>
-                    </NavLink>
+                    {/* </NavLink> */}
                 </Form>
+                <br/>
+                <Button color="gray" fluid size="large" onClick={this.logout}>
+                        Log Out
+                </Button>
             </Segment>
             <Message>
                 Not registered yet? 
@@ -109,6 +115,7 @@ class Login extends Component{
                 > Signup</NavLink>
             </Message>
             
+            
             </Grid.Column>
         </Grid>
         </div>
@@ -117,5 +124,5 @@ class Login extends Component{
 }
 
 
-export default Login
+export default withRouter(Login)
 
