@@ -1,7 +1,20 @@
 import React, {Component} from 'react'
 import "./styles.css"
+import {
+    Button,
+    Form,
+    Grid,
+    Header,
+    Message,
+    Segment,
+    Image,
+  } from 'semantic-ui-react';
+  import { NavLink, Link } from 'react-router-dom';
 
 class SignUp extends Component{
+    state = {}
+
+    handleSubmit = () => this.setState({ password: '', username: '', email: ''})
 
     handleChange = (e) => {
         // debugger
@@ -29,40 +42,68 @@ class SignUp extends Component{
     }
    
     render(){
+        const { username, password, email } = this.state
         return(
-        <div className="signup">
-            <img src="./urban.jpg"></img>
-
-
-
-            <div class="form-box">
-                <div class="form-logo">
-                    {/* <p class="text-center"><img src="img/logo.png" alt="logo"></p> */}
-                </div>
-                <form>
-                    <input type="text" class="form-control" name="username" placeholder="Username" onChange={(e) => this.handleChange(e)}/>
-                    <input type="password" class="form-control" name="password" onChange={(e) => this.handleChange(e)}/>
-                    <input type="checkbox"/> Save Password
-                    <input type="submit" class="btn btn-social" value="LOGIN"/>
-                </form>
-                <a href="#" class="login-action" title="Forgot password">
-                    <p>Forgot your password?</p>
-                </a>
-                <a href="signin.html" class="login-action" title="Signi in">
-                    <p>New User?</p>
-                </a>
-            </div>
             
+        <div className="Login_Div bg-img">
+            
+        <Grid centered columns={2}>
+            <Grid.Column>
+                    <img className="logo" src={require('./logo.png')}></img>
+              
+            <Segment>
+                <Form size="large">
+                    <Form.Input
+                        fluid
+                        icon="user"
+                        iconPosition="left"
+                        placeholder="E-mail"
+                        name= "e-mail"
+                        value={email}
+                        onChange={(e) => this.handleChange(e)}
+                    />
+                    <Form.Input
+                        fluid
+                        icon="user"
+                        iconPosition="left"
+                        placeholder="User Name"
+                        name= "username"
+                        value={username}
+                        onChange={(e) => this.handleChange(e)}
+                    />
+                    <Form.Input
+                        fluid
+                        icon="lock"
+                        iconPosition="left"
+                        placeholder="Password"
+                        type="password"
+                        name= "password"
+                        value={password}
+                        onChange={(e) => this.handleChange(e)}
+                    />
+        
+                    <Button color="gray" fluid size="large" onClick={(e) => this.signUp(e)} >
+                        Sign Up 
+                    </Button>
+                    <br/>
+                    <NavLink
+                        to="/login"
+                        exact
+                        
+                        activeStyle={{
+                            background: 'darkblue'
+                        }}
+                    > 
+                        <Button color="gray" fluid size="large" >
+                            Log In
+                        </Button>
 
-
-            {/* <h2>Signup</h2>
-            <form onSubmit={(e) => this.signUp(e)}>
-            <label>UserName</label>
-            <input name="username" type="text" onChange={(e) => this.handleChange(e)}/>
-            <label>Password</label>
-            <input name="password" type="password" onChange={(e) => this.handleChange(e)}/>
-            <input type="submit"/>
-            </form> */}
+                    </NavLink>
+                </Form>
+            </Segment>
+            
+            </Grid.Column>
+        </Grid>
         </div>
         )
     }
@@ -71,3 +112,11 @@ class SignUp extends Component{
 export default SignUp
 
 
+    {/* <h2>Signup</h2>
+            <form onSubmit={(e) => this.signUp(e)}>
+            <label>UserName</label>
+            <input name="username" type="text" onChange={(e) => this.handleChange(e)}/>
+            <label>Password</label>
+            <input name="password" type="password" onChange={(e) => this.handleChange(e)}/>
+            <input type="submit"/>
+            </form> */}

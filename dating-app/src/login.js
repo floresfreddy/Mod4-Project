@@ -8,7 +8,7 @@ import {
     Segment,
     Image,
   } from 'semantic-ui-react';
-  import {Link} from 'react-router-dom'
+  import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom';
 
 class Login extends Component{
     handleChange = (e) => {
@@ -49,7 +49,7 @@ class Login extends Component{
         //     <input type="submit"/>
         //     </form>
         // </div>
-        <div className="Login_Div">
+        <div className="Login_Div bg-img">
             
         <Grid centered columns={2}>
             <Grid.Column>
@@ -81,8 +81,17 @@ class Login extends Component{
                 </Form>
             </Segment>
             <Message>
-                Not registered yet? <a href="#">Sign Up</a>
+                Not registered yet? 
+                <NavLink
+                to="/signup"
+                exact
+                
+                activeStyle={{
+                    background: 'darkblue'
+                }}
+                > Signup</NavLink>
             </Message>
+            
             </Grid.Column>
         </Grid>
         </div>
