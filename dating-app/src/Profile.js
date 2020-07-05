@@ -6,8 +6,9 @@ class Profile extends React.Component {
   render() {
     return(
       <div>
-          <Matches/>
-          <Form/>
+          {/* <Matches/>
+          <Form/> */}
+          <h1> Hello </h1>
       </div>
     )
   }

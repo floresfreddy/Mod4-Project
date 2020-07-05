@@ -5,6 +5,7 @@ import 'semantic-ui-css/semantic.min.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import SignUp from "./SignUp.js"
 import login from "./login.js"
+import Profile from "./Profile.js"
 
 ReactDOM.render(
   // <React.StrictMode>
@@ -15,6 +16,7 @@ ReactDOM.render(
     <Route exact path="/" component={App} />
     <Route exact path="/signup" component={SignUp} />
     <Route exact path="/login" component={login} />
+    <Route exact path="/profile" component={Profile} />
   </div>
 </Router>,
   document.getElementById('root')

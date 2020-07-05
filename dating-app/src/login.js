@@ -8,15 +8,22 @@ import {
     Segment,
     Image,
   } from 'semantic-ui-react';
-  import { BrowserRouter as Router, Route, NavLink, Link } from 'react-router-dom';
+  import { BrowserRouter as Router, Route, NavLink, Link, Redirect} from 'react-router-dom';
+  import Profile from './Profile.js'
 
 class Login extends Component{
+    state = { 
+        redirect: "/profile"
+     };
+
     handleChange = (e) => {
         // debugger
         this.setState({
             [e.target.name]: e.target.value
         })
     }
+
+  
 
     logIn = (e) => {
         e.preventDefault()
@@ -32,9 +39,11 @@ class Login extends Component{
             })
         })
         .then(res =>  res.json())
-        .then(userInfo => {
-            localStorage.token = userInfo.token
-        })
+        .then(userInfo => 
+            {
+            localStorage.token = userInfo.token 
+        }
+        )
     }
    
     render(){
@@ -62,7 +71,7 @@ class Login extends Component{
                         icon="user"
                         iconPosition="left"
                         placeholder="User Name"
-                        name= "username"
+                        name="username"
                         onChange={(e) => this.handleChange(e)}
                     />
                     <Form.Input
@@ -71,13 +80,21 @@ class Login extends Component{
                         iconPosition="left"
                         placeholder="Password"
                         type="password"
-                        name= "password"
+                        name="password"
                         onChange={(e) => this.handleChange(e)}
                     />
-        
-                    <Button color="gray" fluid size="large">
+                    <NavLink
+                        to="/profile"
+                        exact
+                        
+                        activeStyle={{
+                            background: 'darkblue'
+                        }}
+                    >
+                    <Button color="gray" fluid size="large" onClick={this.reroute}>
                         Login
                     </Button>
+                    </NavLink>
                 </Form>
             </Segment>
             <Message>
