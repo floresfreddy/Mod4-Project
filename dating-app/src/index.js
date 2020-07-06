@@ -9,9 +9,6 @@ import Profile from "./Profile.js"
 import MainContainer from "./MainContainer.js"
 
 ReactDOM.render(
-  // <React.StrictMode>
-  //   <App />
-  // </React.StrictMode>,
   <Router>
   <div>
     <Route exact path="/" component={App} />

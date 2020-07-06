@@ -9,7 +9,7 @@ import SideBar from "./SideBar.js"
 
 class Profile extends React.Component {
   state={
-    selected: null 
+    selected: null
   }
 
   selectedLink=(value)=>{
@@ -18,12 +18,30 @@ class Profile extends React.Component {
     })
   }
 
+  componentDidMount(){
+      fetch("http://localhost:3000/api/v1/users",
+      {
+        method: "GET",
+        headers: {
+          "Authorization": `Bearer ${localStorage.token}`
+        } 
+      })
+      .then(res => res.json())
+      .then(data => 
+        {
+        this.setState({
+          users: data
+        })
+      }
+      )
+  }
+
   render() {
     return(
       <div>
          { localStorage.token
          ? <div>
-              <SideBar selectedLink={this.selectedLink}/>
+              <SideBar selectedLink={this.selectedLink} users={this.state.users}/>
               <NavBar/>
               <MainContainer selection={this.state.selected}/>
            </div>
