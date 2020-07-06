@@ -12,6 +12,11 @@ class Api::V1::UsersController < ApplicationController
         render json: {error: "Please try again"}, status: :not_acceptable
       end
     end
+
+    def index 
+      @users = User.all
+      render json: @users
+    end 
   
     private
   

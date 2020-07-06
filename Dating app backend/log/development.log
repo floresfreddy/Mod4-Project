@@ -1319,3 +1319,73 @@ Processing by Api::V1::AuthController#create as */*
 Completed 200 OK in 300ms (Views: 0.5ms | ActiveRecord: 13.5ms | Allocations: 888)
 
 
+Started GET "/api/v1/users" for ::1 at 2020-07-06 11:33:53 -0500
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 503)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:14:in `logged_in?'
+  [1m[35m (0.5ms)[0m  [1m[35mCREATE DATABASE "backend_dating_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCREATE DATABASE "backend_dating_app_test" ENCODING = 'unicode'[0m
+Started POST "/api/v1/login" for ::1 at 2020-07-06 11:45:46 -0500
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"username"=>"22222", "password"=>"[FILTERED]", "auth"=>{"username"=>"22222", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "22222"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:7:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.11ms)
+Completed 200 OK in 335ms (Views: 1.4ms | ActiveRecord: 11.0ms | Allocations: 7439)
+
+
+Started POST "/api/v1/login" for ::1 at 2020-07-06 11:45:47 -0500
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"username"=>"22222", "password"=>"[FILTERED]", "auth"=>{"username"=>"22222", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "22222"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:7:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.08ms)
+Completed 200 OK in 310ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 906)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-06 11:46:04 -0500
+Processing by Api::V1::UsersController#index as HTML
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 503)
+
+
+  
+NoMethodError (undefined method `split' for nil:NilClass):
+  
+app/controllers/application_controller.rb:14:in `logged_in?'
+Started GET "/api/v1/users" for ::1 at 2020-07-06 11:47:11 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.3ms | Allocations: 2415)
+
+
+  
+NameError (uninitialized constant Api::V1::UsersController::Users):
+  
+app/controllers/api/v1/users_controller.rb:17:in `index'
+Started GET "/api/v1/users" for ::1 at 2020-07-06 11:48:25 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.68ms)
+Completed 200 OK in 35ms (Views: 9.3ms | ActiveRecord: 12.7ms | Allocations: 9923)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-06 11:49:38 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (5.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.88ms)
+Completed 200 OK in 14ms (Views: 5.9ms | ActiveRecord: 6.6ms | Allocations: 3407)
+
+
