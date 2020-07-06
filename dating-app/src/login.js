@@ -15,15 +15,14 @@ class Login extends Component{
   
 
     handleChange = (e) => {
-        // debugger
         this.setState({
             [e.target.name]: e.target.value
         })
     }
 
-    logout = () => {
-        localStorage.clear()
-    }
+    // logout = () => {
+    //     localStorage.clear()
+    // }
 
     logIn = (e) => {
         e.preventDefault()
@@ -50,16 +49,7 @@ class Login extends Component{
    
     render(){
         return(
-        // <div>
-        //     <h2>LogIn</h2>
-        //     <form onSubmit={(e) => this.logIn(e)}>
-        //     <label>UserName</label>
-        //     <input name="username" type="text" onChange={(e) => this.handleChange(e)}/>
-        //     <label>Password</label>
-        //     <input name="password" type="password" onChange={(e) => this.handleChange(e)}/>
-        //     <input type="submit"/>
-        //     </form>
-        // </div>
+      
         <div className="Login_Div bg-img">
             
         <Grid centered columns={2}>
@@ -85,23 +75,11 @@ class Login extends Component{
                         name="password"
                         onChange={(e) => this.handleChange(e)}
                     />
-                    {/* <NavLink
-                        to="/profile"
-                        exact
-                        
-                        activeStyle={{
-                            background: 'darkblue'
-                        }}
-                    > */}
                     <Button color="gray" fluid size="large">
                         Login
                     </Button>
-                    {/* </NavLink> */}
                 </Form>
-                <br/>
-                <Button color="gray" fluid size="large" onClick={this.logout}>
-                        Log Out
-                </Button>
+            
             </Segment>
             <Message>
                 Not registered yet? 

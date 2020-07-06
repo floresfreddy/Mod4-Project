@@ -3,13 +3,14 @@ import Form from './Form.js';
 import Matches from './Matches.js'
 import { BrowserRouter as Router, Route, NavLink, Link, Redirect,  withRouter } from 'react-router-dom';
 import Login from "./login.js"
+import SideBar from "./SideBar.js"
 
 class Profile extends React.Component {
   render() {
     return(
       <div>
          { localStorage.token
-         ? <h1>Hello</h1>
+         ? <SideBar/>
          : <Login/>
          }
           {/* <Matches/>
