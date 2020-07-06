@@ -17,18 +17,18 @@ class App extends React.Component {
   render(){
 
     return (
-      <BrowserRouter>
-    <div>
-        <NavBar />
-        <Switch>
+    //   <BrowserRouter>
+    // <div>
+    //     <NavBar />
+    //     <Switch>
 
-        <Route path="/login" component={LogIn} />
+    //     <Route path="/login" component={LogIn} />
 
-        <Route path="/signup" component={SignUp} />
+    //     <Route path="/signup" component={SignUp} />
 
-        <Route path="/form" component={Form} />
+    //     <Route path="/form" component={Form} />
 
-        </Switch>
+    //     </Switch>
         
 
     // </div>
@@ -44,9 +44,10 @@ class App extends React.Component {
         <LogIn/> 
     </div>
     
-      <SignUp/>
+      // <SignUp/>
        
-    )};
+    )
+  }
 }
 
 export default App;
