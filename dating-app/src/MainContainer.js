@@ -1,14 +1,15 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import MatchTileList from './MatchTileList.js'
 
 class MainContainer extends React.Component {
 
     renderSwitch(param) {
         switch(param) {
           case 'match':
-            return <h1>Get Matched Form</h1>;
+            return <h1>Match Form Goes Here</h1>
           case 'matches': 
-            return <h1> Matches Go Here</h1>
+            return <MatchTileList users={this.props.users}/>
           default: 
             return null; 
         }
