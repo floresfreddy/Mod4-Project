@@ -1,10 +1,6 @@
 import React from 'react';
-<<<<<<< HEAD
-import Profile from './Profile.js'
-=======
-import Form from './Form.js'
->>>>>>> Stephanie
-import NavBar from './NavBar.js'
+// import Form from './Form.js'
+// import NavBar from './NavBar.js'
 import LogIn from './login.js'
 import './styles.css'
 import Form from './Form.js'
