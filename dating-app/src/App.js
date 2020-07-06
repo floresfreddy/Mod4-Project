@@ -5,6 +5,7 @@ import LogIn from './login.js'
 import SignUp from './SignUp.js'
 import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import './styles.css'
+import Form from './Form.js'
 
 class App extends React.Component {
   
@@ -23,6 +24,8 @@ class App extends React.Component {
         <Route path="/login" component={LogIn} />
 
         <Route path="/signup" component={SignUp} />
+
+        <Route path="/form" component={Form} />
 
         </Switch>
         
