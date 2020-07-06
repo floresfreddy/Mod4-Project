@@ -6,7 +6,7 @@ import {
     Grid,
     Segment,
   } from 'semantic-ui-react';
-  import { NavLink} from 'react-router-dom';
+  import { NavLink, withRouter} from 'react-router-dom';
 
 class SignUp extends Component{
     state = {}
@@ -34,7 +34,7 @@ class SignUp extends Component{
         })
         .then(res => res.json())
         .then(console.log)
-
+        this.props.history.push("/login");
     }
    
     render(){
@@ -105,5 +105,5 @@ class SignUp extends Component{
     }
 }
 
-export default SignUp
+export default withRouter(SignUp)
 
