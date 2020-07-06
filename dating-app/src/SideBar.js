@@ -1,6 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
-import Login from "./login.js"
+import { withRouter, NavLink } from 'react-router-dom';
 import "./styles.css"
 
 class SideBar extends React.Component {
@@ -12,18 +11,35 @@ class SideBar extends React.Component {
         })
     }
 
+ match=()=>{
+    this.props.selectedLink("match")
+ }
+
+ matches=()=>{
+    this.props.selectedLink("matches")
+ }
+
   render() {
     return(
         <div>
         { localStorage.token
-            ? <div class="sidebar-nav">
-                <img src={require('./user.jpg')}alt="User name" class="img-circle img-user"></img>
-                <h2 class="text-center hidden-xs">My Profile</h2>
+            ? <div className="sidebar-nav">
+                <img src={require('./user.jpg')}alt="User name" className="img-circle img-user"></img>
+                <h2 className="text-center hidden-xs">My Profile</h2>
 
-                
-                <p class="text-center user-description hidden-xs">
-                    <h3 onClick={this.logout}>Logout</h3>
+                <p onClick={this.match} className="text-center user-description hidden-xs">
+                    Get Matched!
                 </p>
+
+                <p onClick={this.matches} className="text-center user-description hidden-xs">
+                    Matches 
+                </p>
+             
+                <p className="text-center user-description hidden-xs" onClick={this.logout}>
+                    Logout
+                </p>
+
+
               </div>
             : this.props.history.push("/login")
         }

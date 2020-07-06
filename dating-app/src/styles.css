@@ -60,3 +60,13 @@ body{
 html, body, .sidebar-nav, .content-posts {
     height: 100%;
 }
+
+.nav{
+    background-color: rgb(21, 49, 109);
+    height: 50px;
+}
+
+.main_container{
+    margin-left: 275px;
+    float: left;
+}
