@@ -1,3 +1,62 @@
 .signup{
-    background-image:  url("urban.jpg");
+    background-image: url("urban.jpg");
+}
+
+body{
+    background-image: url("urban.jpg");
+}
+
+.bg-img{
+   
+    background-image: url("urban.jpg");
+    min-height: 1000px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+
+.logo{
+    width:400px;
+}
+
+.Login_Div{
+    padding: 300px;
+}
+
+.sidebar-nav {
+    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.08);
+    position: fixed;
+    width: 240px;
+    top: 0px;
+    padding: 50px 10px 0px 10px;
+    background: #ffffff;
+    z-index: 99;
+}
+
+.img-user {
+    width: 90%;
+    margin-left: 5%;
+}
+
+.card-post .img-user  { max-width: 110px;
+                        min-width: 60px;}
+
+.card-post .chat-row .img-user { min-width:inherit; }
+
+.img-user-mini {
+    width: 30px;
+    height: 30px;
+}
+
+.popular-img {
+   margin-top:10px;
+}
+
+.img-circle {
+    border-radius: 50%;
+}
+
+html, body, .sidebar-nav, .content-posts {
+    height: 100%;
 }

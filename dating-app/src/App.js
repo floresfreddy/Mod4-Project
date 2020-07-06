@@ -7,6 +7,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 import './styles.css'
 import Form from './Form.js'
 
+
 class App extends React.Component {
   
   state = {
@@ -30,9 +31,20 @@ class App extends React.Component {
         </Switch>
         
 
+    // </div>
+    // </BrowserRouter>
+    <div className="bg-img">
+      {/* <ImageBackground source={require('./urban.jpg')}
+          width={width}
+          height={height}
+          style = {{flex:1}}>
+            {this.props.children}
+        </ImageBackground>  */}
+        {/* <img src={require('./urban.jpg')}></img> */}
+        <LogIn/> 
     </div>
-    </BrowserRouter>
-
+    
+      <SignUp/>
        
     )};
 }
