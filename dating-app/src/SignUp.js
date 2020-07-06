@@ -4,12 +4,9 @@ import {
     Button,
     Form,
     Grid,
-    Header,
-    Message,
     Segment,
-    Image,
   } from 'semantic-ui-react';
-  import { NavLink, Link } from 'react-router-dom';
+  import { NavLink} from 'react-router-dom';
 
 class SignUp extends Component{
     state = {}
@@ -17,7 +14,6 @@ class SignUp extends Component{
     handleSubmit = () => this.setState({ password: '', username: '', email: ''})
 
     handleChange = (e) => {
-        // debugger
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -49,7 +45,7 @@ class SignUp extends Component{
             
         <Grid centered columns={2}>
             <Grid.Column>
-                    <img className="logo" src={require('./logo.png')}></img>
+                    <img className="logo" src={require('./logo.png')} alt="logo"></img>
               
             <Segment>
                 <Form size="large">
@@ -111,12 +107,3 @@ class SignUp extends Component{
 
 export default SignUp
 
-
-    {/* <h2>Signup</h2>
-            <form onSubmit={(e) => this.signUp(e)}>
-            <label>UserName</label>
-            <input name="username" type="text" onChange={(e) => this.handleChange(e)}/>
-            <label>Password</label>
-            <input name="password" type="password" onChange={(e) => this.handleChange(e)}/>
-            <input type="submit"/>
-            </form> */}

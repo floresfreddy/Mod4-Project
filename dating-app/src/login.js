@@ -3,15 +3,14 @@ import {
     Button,
     Form,
     Grid,
-    Header,
     Message,
     Segment,
-    Image,
   } from 'semantic-ui-react';
-  import { BrowserRouter as NavLink, withRouter } from 'react-router-dom';
-  import Profile from './Profile.js'
+  import { NavLink, withRouter } from 'react-router-dom';
+
 
 class Login extends Component{
+    state = {}
   
 
     handleChange = (e) => {
@@ -19,10 +18,6 @@ class Login extends Component{
             [e.target.name]: e.target.value
         })
     }
-
-    // logout = () => {
-    //     localStorage.clear()
-    // }
 
     logIn = (e) => {
         e.preventDefault()
@@ -54,10 +49,10 @@ class Login extends Component{
             
         <Grid centered columns={2}>
             <Grid.Column>
-                    <img className="logo" src={require('./logo.png')}></img>
+                    <img className="logo" alt="logo" src={require('./logo.png')}></img>
               
             <Segment>
-                <Form size="large"  onSubmit={(e) => this.logIn(e)}>
+                <Form size="large" onSubmit={(e) => this.logIn(e)}>
                     <Form.Input
                         fluid
                         icon="user"
@@ -75,7 +70,7 @@ class Login extends Component{
                         name="password"
                         onChange={(e) => this.handleChange(e)}
                     />
-                    <Button color="gray" fluid size="large">
+                    <Button color="grey" fluid size="large">
                         Login
                     </Button>
                 </Form>
