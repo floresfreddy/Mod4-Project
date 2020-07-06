@@ -3,7 +3,7 @@ import React from 'react';
 // import NavBar from './NavBar.js'
 import LogIn from './login.js'
 import './styles.css'
-import Form from './Form.js'
+// import Form from './Form.js'
 
 
 class App extends React.Component {
