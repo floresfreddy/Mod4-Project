@@ -1,12 +1,13 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import Form from './Form.js'
 
 class MainContainer extends React.Component {
 
     renderSwitch(param) {
         switch(param) {
           case 'match':
-            return <h1>Get Matched Form</h1>;
+            return <Form/>;
           case 'matches': 
             return <h1> Matches Go Here</h1>
           default: 
