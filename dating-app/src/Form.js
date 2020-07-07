@@ -61,8 +61,13 @@ class Form extends React.Component {
         return frequency[b] - frequency[a];
     });
 
-   console.log(Object.entries(frequency).sort((a,b)=> b[1]-a[1]))
+   let topArray = Object.entries(frequency).sort((a,b)=> b[1]-a[1]).slice(0,25)
 
+   let topTerms =  []
+
+   topArray.forEach(t=> topTerms.push(t[0]))
+
+   this.props.setTerms(topTerms)
 
   }
 

@@ -8,16 +8,11 @@ class SearchTermCard extends React.Component{
 
 render(){
     return(
-  <div>
-      <h1>My Search Words</h1>
-      <p>Choose up to 10 Search Words to get Matched:</p>
-      <br/> 
+    <div>
           <Label color='teal' key='teal' size='big'>
-             Search Word Goes Here
+             {this.props.term}
             <Icon name='delete' />
           </Label>
-    {/* <Message color='teal'>Search Term Example</Message> */}
-   
     </div>
 )}
 }

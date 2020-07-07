@@ -7,20 +7,11 @@ class SearchTermList extends React.Component{
 render(){
     return(
   <div>
+    <h1>My Search Words</h1>
+      <p>Choose up to 10 Search Words to get Matched:</p>
       <br/> 
-        <SearchTermCard/> 
-    {/* <Message color='red'>Red</Message>
-    <Message color='orange'>Orange</Message>
-    <Message color='yellow'>Yellow</Message>
-    <Message color='olive'>Olive</Message>
-    <Message color='green'>Green</Message>
-    <Message color='teal'>Teal</Message>
-    <Message color='blue'>Blue</Message>
-    <Message color='violet'>Violet</Message>
-    <Message color='purple'>Purple</Message>
-    <Message color='pink'>Pink</Message>
-    <Message color='brown'>Brown</Message>
-    <Message color='black'>Black</Message> */}
+      <br/> 
+      {this.props.terms.map(term => <SearchTermCard term={term}/>  )}
   </div>
 )}
 }

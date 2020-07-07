@@ -7,14 +7,24 @@ import Form from './Form.js'
 
 class MainContainer extends React.Component {
 
+  state = {
+    terms: []
+  }
+
+  setTermsList = (terms) => {
+
+    this.setState({
+      terms: terms 
+    })
+  }
     renderSwitch(param) {
         switch(param) {
           case 'match':
-            return <Form/>
+            return <Form setTerms={this.setTermsList}/>
           case 'matches': 
             return <MatchTileList users={this.props.users}/>
           case 'searchTerms': 
-            return <SearchTermList/>
+            return <SearchTermList terms={this.state.terms}/>
           default: 
             return null; 
         }
