@@ -16,22 +16,6 @@ class MainContainer extends React.Component {
       terms: terms 
     })
 
-    fetch("http://localhost:3000/terms",
-      {
-        method: "GET",
-        headers: {
-          "Authorization": `Bearer ${localStorage.token}`,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        } 
-      })
-      .then(res => res.json())
-      .then(data => 
-        {
-          console.log(data)
-      }
-      )
-
   }
 
 
