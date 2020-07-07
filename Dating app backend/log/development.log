@@ -1399,3 +1399,111 @@ Migrating to CreateTerms (20200707154728)
   [1m[36mActiveRecord::InternalMetadata Load (47.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(500671914440354370)[0m
   [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started POST "/api/v1/users" for ::1 at 2020-07-07 14:00:26 -0500
+Started POST "/api/v1/login" for ::1 at 2020-07-07 14:00:26 -0500
+Started POST "/api/v1/login" for ::1 at 2020-07-07 14:00:27 -0500
+  [1m[35m (16.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (17.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (17.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as */*
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"username"=>"example2000", "password"=>"[FILTERED]", "user"=>{"username"=>"example2000"}}
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"username"=>"example2000", "password"=>"[FILTERED]", "auth"=>{"username"=>"example2000", "password"=>"[FILTERED]"}}
+[31mUnpermitted parameter: :user[0m
+  Parameters: {"username"=>"example2000", "password"=>"[FILTERED]", "auth"=>{"username"=>"example2000", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (48.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "example2000"], ["LIMIT", 1]]
+  [1m[36mUser Load (48.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "example2000"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:7:in `create'
+  ↳ app/controllers/api/v1/auth_controller.rb:7:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 200 OK in 881ms (Views: 273.1ms | ActiveRecord: 77.4ms | Allocations: 6991)
+
+
+Completed 200 OK in 894ms (Views: 258.4ms | ActiveRecord: 346.4ms | Allocations: 7683)
+
+
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "example2000"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+Started GET "/api/v1/users" for ::1 at 2020-07-07 14:00:28 -0500
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 406 Not Acceptable in 2014ms (Views: 0.7ms | ActiveRecord: 691.8ms | Allocations: 203980)
+
+
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (22.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.07ms)
+Completed 200 OK in 74ms (Views: 49.7ms | ActiveRecord: 22.7ms | Allocations: 4870)
+
+
+Started POST "/api/v1/login" for ::1 at 2020-07-07 14:07:26 -0500
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"username"=>"example2000", "password"=>"[FILTERED]", "auth"=>{"username"=>"example2000", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "example2000"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:7:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.09ms)
+Completed 200 OK in 256ms (Views: 0.6ms | ActiveRecord: 0.6ms | Allocations: 989)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 14:07:26 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.04ms)
+Completed 200 OK in 12ms (Views: 7.4ms | ActiveRecord: 1.0ms | Allocations: 3542)
+
+
+Started POST "/api/v1/login" for ::1 at 2020-07-07 14:22:38 -0500
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"username"=>"Stephanie", "password"=>"[FILTERED]", "auth"=>{"username"=>"Stephanie", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Stephanie"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:7:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 261ms (Views: 0.6ms | ActiveRecord: 0.7ms | Allocations: 985)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 14:22:38 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.89ms)
+Completed 200 OK in 24ms (Views: 4.3ms | ActiveRecord: 1.3ms | Allocations: 3545)
+
+
+Started POST "/api/v1/login" for ::1 at 2020-07-07 14:24:46 -0500
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"username"=>"Stephanie", "password"=>"[FILTERED]", "auth"=>{"username"=>"Stephanie", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Stephanie"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:7:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 260ms (Views: 0.5ms | ActiveRecord: 0.3ms | Allocations: 889)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 14:24:46 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.33ms)
+Completed 200 OK in 11ms (Views: 5.9ms | ActiveRecord: 1.2ms | Allocations: 3535)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 14:51:04 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.04ms)
+Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 0.9ms | Allocations: 3622)
+
+
