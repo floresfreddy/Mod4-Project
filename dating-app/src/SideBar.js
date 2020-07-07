@@ -19,6 +19,14 @@ class SideBar extends React.Component {
     this.props.selectedLink("matches")
  }
 
+ matches=()=>{
+    this.props.selectedLink("matches")
+ }
+
+searchTerms=()=>{
+    this.props.selectedLink("searchTerms")
+ }
+
   render() {
     return(
         <div>
@@ -29,6 +37,10 @@ class SideBar extends React.Component {
 
                 <p onClick={this.match} className="text-center user-description hidden-xs">
                     Get Matched!
+                </p>
+
+                <p onClick={this.searchTerms} className="text-center user-description hidden-xs">
+                    Search Terms
                 </p>
 
                 <p onClick={this.matches} className="text-center user-description hidden-xs">
