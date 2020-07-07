@@ -8,7 +8,7 @@ class MainContainer extends React.Component {
           case 'match':
             return <h1>Get Matched Form</h1>;
           case 'matches': 
-            return <h1> Matches Go Here</h1>
+            return <MatchTileList users={this.props.users}/>
           default: 
             return null; 
         }
