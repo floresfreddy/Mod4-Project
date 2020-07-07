@@ -3,12 +3,19 @@ class TermsController < ActionController::API
     
     # Sign Up
     def create
-      terms = Term.new(term_params)
+      username = term_params['username']
+      user = User.all.find_by(username: username)
+
+      terms = term_params['terms'].join(' ')
+
+      term = Term.new(terms: terms, user_id: user.id)
+
+      term.save
     end
 
     def index 
       @terms = Term.all
-      render json: @terms
+      render json: @terms, :only=>[:id,:terms,:user_id]
     end 
 
     def update 
@@ -19,7 +26,7 @@ class TermsController < ActionController::API
     private
   
     def term_params
-      params.permit(:terms, :user_id)
+      params.permit(:username, :terms=>[])
     end
   end
   

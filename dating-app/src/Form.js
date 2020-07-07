@@ -67,8 +67,21 @@ class Form extends React.Component {
 
    topArray.forEach(t=> topTerms.push(t[0]))
 
-   this.props.setTerms(topTerms)
 
+   fetch("http://localhost:3000/terms",
+   {
+     method: "POST",
+     headers: {
+      //  "Authorization": `Bearer ${localStorage.token}`,
+       "Content-Type" : "application/json"
+     },
+     body: JSON.stringify({
+        terms: topTerms,
+        // 'username': localStorage.getItem('user')
+        username: localStorage.getItem('user')
+      })
+   })
+   .then(res => this.props.setTerms(topTerms))
   }
 
 
