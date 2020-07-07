@@ -61,9 +61,27 @@ class Form extends React.Component {
         return frequency[b] - frequency[a];
     });
 
-   let finishedArray = Object.entries(frequency).sort((a,b)=> b[1]-a[1])
+   let topArray = Object.entries(frequency).sort((a,b)=> b[1]-a[1]).slice(0,25)
+
+   let topTerms =  []
+
+   topArray.forEach(t=> topTerms.push(t[0]))
 
 
+   fetch("http://localhost:3000/terms",
+   {
+     method: "POST",
+     headers: {
+      //  "Authorization": `Bearer ${localStorage.token}`,
+       "Content-Type" : "application/json"
+     },
+     body: JSON.stringify({
+        terms: topTerms,
+        // 'username': localStorage.getItem('user')
+        username: localStorage.getItem('user')
+      })
+   })
+   .then(res => this.props.setTerms(topTerms))
   }
 
 
