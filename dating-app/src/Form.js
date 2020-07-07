@@ -1,4 +1,5 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
 
 class Form extends React.Component {
   
@@ -13,6 +14,7 @@ class Form extends React.Component {
   }
 
   onFileUpload = () => {
+   this.props.selectedLink("searchTerms")
     if(this.state.selectedFile){
       const reader = new FileReader();
       reader.onload = this.onReaderLoad;
@@ -81,7 +83,10 @@ class Form extends React.Component {
         username: localStorage.getItem('user')
       })
    })
-   .then(res => this.props.setTerms(topTerms))
+   .then(res => this.props.setTerms(topTerms)
+
+   )
+
   }
 
 
@@ -103,4 +108,4 @@ class Form extends React.Component {
   }
 }
 
-export default Form;
+export default withRouter(Form)

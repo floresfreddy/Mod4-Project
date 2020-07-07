@@ -4,6 +4,10 @@ import { Message } from 'semantic-ui-react'
 import SearchTermCard from './SearchTermCard.js'
 
 class SearchTermList extends React.Component{
+  state={
+    terms: []
+  }
+
 render(){
     return(
   <div>
@@ -11,7 +15,7 @@ render(){
       <p>Choose up to 10 Search Words to get Matched:</p>
       <br/> 
       <br/> 
-      {this.props.terms.map(term => <SearchTermCard term={term}/>  )}
+      {this.state.terms.map(term => <SearchTermCard term={term}/>  )}
   </div>
 )}
 }

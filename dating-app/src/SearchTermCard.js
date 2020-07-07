@@ -8,12 +8,12 @@ class SearchTermCard extends React.Component{
 
 render(){
     return(
-    <div>
+
           <Label color='teal' key='teal' size='big'>
              {this.props.term}
-            <Icon name='delete' />
+            <Icon name='delete'/>
           </Label>
-    </div>
+
 )}
 }
 

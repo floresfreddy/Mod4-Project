@@ -44,7 +44,7 @@ class Profile extends React.Component {
          ? <div>
               <SideBar selectedLink={this.selectedLink} users={this.state.users}/>
               <NavBar/>
-              <MainContainer selection={this.state.selected} users={this.state.users}/>
+              <MainContainer selection={this.state.selected} users={this.state.users} selectedLink={this.selectedLink}/>
            </div>
          : <Login/>
          }
