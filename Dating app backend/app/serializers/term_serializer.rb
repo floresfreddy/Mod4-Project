@@ -1,3 +1,3 @@
 class TermSerializer < ActiveModel::Serializer
-  attributes :id
+  attributes :id, :terms, :user_id
 end

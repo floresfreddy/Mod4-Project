@@ -2321,3 +2321,108 @@ Processing by TermsController#index as JSON
 Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.6ms | Allocations: 1820)
 
 
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:55:07 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.8ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 5]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (58.3ms)
+Completed 200 OK in 148ms (Views: 72.7ms | ActiveRecord: 9.2ms | Allocations: 15357)
+
+
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.7ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 5]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTerm Load (0.9ms)[0m  [1m[34mSELECT "terms".* FROM "terms"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTerm Destroy (0.5ms)[0m  [1m[31mDELETE FROM "terms" WHERE "terms"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTerm Destroy (0.4ms)[0m  [1m[31mDELETE FROM "terms" WHERE "terms"."id" = $1[0m  [["id", 5]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTerm Destroy (0.4ms)[0m  [1m[31mDELETE FROM "terms" WHERE "terms"."id" = $1[0m  [["id", 6]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTerm Destroy (0.4ms)[0m  [1m[31mDELETE FROM "terms" WHERE "terms"."id" = $1[0m  [["id", 7]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTerm Destroy (0.5ms)[0m  [1m[31mDELETE FROM "terms" WHERE "terms"."id" = $1[0m  [["id", 8]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTerm Destroy (0.4ms)[0m  [1m[31mDELETE FROM "terms" WHERE "terms"."id" = $1[0m  [["id", 9]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/api/v1/users" for ::1 at 2020-07-07 16:57:13 -0500
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"username"=>"new1", "password"=>"[FILTERED]", "user"=>{"username"=>"new1"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "new1"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "new1"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  [1m[36mUser Create (3.4ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "new1"], ["password_digest", "$2a$12$cG.08JC4qqqpFjQFhqrwIOW95IWrWDcZYIKqVvUFgBHyD60HnPjDC"], ["created_at", "2020-07-07 21:57:14.277501"], ["updated_at", "2020-07-07 21:57:14.277501"]]
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+[active_model_serializers]   [1m[36mTerm Load (0.4ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:10:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (4.22ms)
+Completed 201 Created in 675ms (Views: 4.8ms | ActiveRecord: 12.3ms | Allocations: 6047)
+
+
+Started POST "/api/v1/login" for ::1 at 2020-07-07 16:57:20 -0500
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"username"=>"new1", "password"=>"[FILTERED]", "auth"=>{"username"=>"new1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "new1"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:7:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 550ms (Views: 1.1ms | ActiveRecord: 0.4ms | Allocations: 1026)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:57:21 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers]   [1m[36mTerm Load (3.6ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 6]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (9.29ms)
+Completed 200 OK in 18ms (Views: 10.4ms | ActiveRecord: 5.0ms | Allocations: 2945)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 16:57:43 -0500
+Processing by TermsController#create as */*
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "username"=>"new1", "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"]}}
+[31mUnpermitted parameter: :term[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "new1"], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:7:in `create'
+[31mUnpermitted parameter: :term[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mTerm Create (0.7ms)[0m  [1m[32mINSERT INTO "terms" ("terms", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["terms", "javascript bbc news java stack overflow program number teams wschools over amazoncom online introduction dom tutorial angularjs angular display file factors knowledge developers huawei worlds"], ["user_id", 6], ["created_at", "2020-07-07 21:57:43.164554"], ["updated_at", "2020-07-07 21:57:43.164554"]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+Completed 204 No Content in 17ms (ActiveRecord: 2.6ms | Allocations: 4636)
+
+
+Started GET "/terms" for ::1 at 2020-07-07 16:57:43 -0500
+Processing by TermsController#index as JSON
+  Parameters: {"term"=>{}}
+  [1m[36mTerm Load (0.4ms)[0m  [1m[34mSELECT "terms".* FROM "terms"[0m
+  ↳ app/controllers/terms_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.76ms)
+Completed 200 OK in 9ms (Views: 8.5ms | ActiveRecord: 0.4ms | Allocations: 1437)
+
+
