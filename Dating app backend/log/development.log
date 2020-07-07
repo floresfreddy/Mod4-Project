@@ -1399,6 +1399,7 @@ Migrating to CreateTerms (20200707154728)
   [1m[36mActiveRecord::InternalMetadata Load (47.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(500671914440354370)[0m
   [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+<<<<<<< HEAD
 Started POST "/api/v1/users" for ::1 at 2020-07-07 14:00:26 -0500
 Started POST "/api/v1/login" for ::1 at 2020-07-07 14:00:26 -0500
 Started POST "/api/v1/login" for ::1 at 2020-07-07 14:00:27 -0500
@@ -1505,5 +1506,927 @@ Processing by Api::V1::UsersController#index as */*
   ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
 [active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.04ms)
 Completed 200 OK in 7ms (Views: 4.4ms | ActiveRecord: 0.9ms | Allocations: 3622)
+=======
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_try_advisory_lock(500671914440354370)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTerms (20200707154728)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.2ms)[0m  [1m[35mCREATE TABLE "terms" ("id" bigserial primary key, "terms" character varying, "user_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mprimary::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20200707154728"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.8ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT pg_advisory_unlock(500671914440354370)[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:02:24 -0500
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (4.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.23ms)
+Completed 200 OK in 264ms (Views: 91.0ms | ActiveRecord: 25.9ms | Allocations: 11734)
+
+
+Started POST "/api/v1/users" for ::1 at 2020-07-07 15:06:00 -0500
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "user"=>{"username"=>"test1"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[36mUser Exists? (1.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  [1m[36mUser Create (4.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "test1"], ["password_digest", "$2a$12$Afaw4K8dPvHcMtKYeMctnedqqOH4rm3HlbRt9Zt/CEi4WKaa2eB52"], ["created_at", "2020-07-07 20:06:01.432749"], ["updated_at", "2020-07-07 20:06:01.432749"]]
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.57ms)
+Completed 201 Created in 649ms (Views: 26.3ms | ActiveRecord: 12.5ms | Allocations: 6958)
+
+
+Started POST "/api/v1/login" for ::1 at 2020-07-07 15:06:09 -0500
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "auth"=>{"username"=>"test1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:7:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 552ms (Views: 1.0ms | ActiveRecord: 0.5ms | Allocations: 1049)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:06:09 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.16ms)
+Completed 200 OK in 15ms (Views: 7.3ms | ActiveRecord: 3.7ms | Allocations: 2142)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:10:37 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (8.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.46ms)
+Completed 200 OK in 19ms (Views: 6.6ms | ActiveRecord: 9.3ms | Allocations: 2162)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:14:04 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (11.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (50.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.85ms)
+Completed 200 OK in 400ms (Views: 12.1ms | ActiveRecord: 347.9ms | Allocations: 8192)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:14:14 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (6.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (82.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.08ms)
+Completed 200 OK in 100ms (Views: 6.7ms | ActiveRecord: 89.8ms | Allocations: 2142)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:14:17 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.81ms)
+Completed 200 OK in 13ms (Views: 6.6ms | ActiveRecord: 3.1ms | Allocations: 2142)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 15:14:44 -0500
+Processing by TermsController#create as */*
+Completed 500 Internal Server Error in 124772ms (ActiveRecord: 0.0ms | Allocations: 79742)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/terms_controller.rb:10:in `create'
+Started POST "/api/v1/login" for ::1 at 2020-07-07 15:17:18 -0500
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"username"=>"test1", "password"=>"[FILTERED]", "auth"=>{"username"=>"test1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:7:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.26ms)
+Completed 200 OK in 589ms (Views: 3.6ms | ActiveRecord: 10.7ms | Allocations: 8139)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:17:19 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (7.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.05ms)
+Completed 200 OK in 50ms (Views: 25.4ms | ActiveRecord: 9.1ms | Allocations: 3555)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 15:17:30 -0500
+Processing by TermsController#create as */*
+Completed 500 Internal Server Error in 36703ms (ActiveRecord: 0.0ms | Allocations: 118650)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/terms_controller.rb:10:in `create'
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:19:17 -0500
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (4.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.58ms)
+Completed 200 OK in 114ms (Views: 24.5ms | ActiveRecord: 18.1ms | Allocations: 10290)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:19:21 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (7.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.69ms)
+Completed 200 OK in 21ms (Views: 6.9ms | ActiveRecord: 8.8ms | Allocations: 2162)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 15:19:33 -0500
+Processing by TermsController#create as */*
+Completed 500 Internal Server Error in 244764ms (ActiveRecord: 0.0ms | Allocations: 132189)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:23:37 -0500
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:23:37 -0500
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/terms_controller.rb:10:in `create'
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:23:37 -0500
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:23:37 -0500
+Processing by Api::V1::UsersController#index as */*
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (106.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (18.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (36.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+  [1m[36mUser Load (74.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (82.58ms)
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+Completed 200 OK in 762ms (Views: 440.6ms | ActiveRecord: 176.4ms | Allocations: 2471828)
+
+
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (59.62ms)
+Completed 200 OK in 862ms (Views: 393.5ms | ActiveRecord: 163.9ms | Allocations: 2917076)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:23:47 -0500
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:23:47 -0500
+Processing by Api::V1::UsersController#index as */*
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (2.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (17.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (37.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (70.66ms)
+Completed 200 OK in 588ms (Views: 178.7ms | ActiveRecord: 62.9ms | Allocations: 2335262)
+
+
+  [1m[36mUser Load (173.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (57.0ms)
+Completed 200 OK in 869ms (Views: 196.2ms | ActiveRecord: 240.3ms | Allocations: 3396428)
+
+
+Processing by Api::V1::UsersController#index as */*
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (4.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (27.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (118.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+  [1m[36mUser Load (192.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (374.34ms)
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (305.63ms)
+Completed 200 OK in 1519ms (Views: 793.0ms | ActiveRecord: 148.7ms | Allocations: 2850320)
+
+
+Completed 200 OK in 1663ms (Views: 781.5ms | ActiveRecord: 262.6ms | Allocations: 3286410)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:23:58 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (32.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (5.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (83.02ms)
+Completed 200 OK in 505ms (Views: 319.9ms | ActiveRecord: 38.1ms | Allocations: 857384)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 15:24:06 -0500
+Processing by TermsController#create as JSON
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "user_id"=>0, "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "user_id"=>0}}
+[31mUnpermitted parameter: :terms[0m
+Completed 500 Internal Server Error in 59577ms (ActiveRecord: 4.8ms | Allocations: 31176)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/terms_controller.rb:10:in `create'
+Started POST "/terms" for ::1 at 2020-07-07 15:25:12 -0500
+Processing by TermsController#create as JSON
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "user_id"=>0, "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "user_id"=>0}}
+[31mUnpermitted parameters: :terms, :term[0m
+Completed 500 Internal Server Error in 89580ms (ActiveRecord: 7.4ms | Allocations: 42987)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/terms_controller.rb:10:in `create'
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:26:49 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (2.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (71.01ms)
+Completed 200 OK in 579ms (Views: 183.5ms | ActiveRecord: 19.3ms | Allocations: 2229612)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 15:26:55 -0500
+Processing by TermsController#create as JSON
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "user_id"=>"a", "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "user_id"=>"a"}}
+[31mUnpermitted parameters: :terms, :term[0m
+Completed 500 Internal Server Error in 76960ms (ActiveRecord: 0.0ms | Allocations: 45262)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/terms_controller.rb:10:in `create'
+Started POST "/terms" for ::1 at 2020-07-07 15:28:17 -0500
+Processing by TermsController#create as JSON
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "user_id"=>"a", "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "user_id"=>"a"}}
+[31mUnpermitted parameters: :terms, :term[0m
+Completed 500 Internal Server Error in 120190ms (ActiveRecord: 0.0ms | Allocations: 60860)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/terms_controller.rb:10:in `create'
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:30:18 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (8.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (54.25ms)
+Completed 200 OK in 226ms (Views: 136.5ms | ActiveRecord: 20.8ms | Allocations: 910024)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 15:30:25 -0500
+Processing by TermsController#create as */*
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "user_id"=>"a", "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "user_id"=>"a"}}
+[31mUnpermitted parameters: :terms, :term[0m
+Completed 500 Internal Server Error in 99330ms (ActiveRecord: 0.0ms | Allocations: 33061)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/terms_controller.rb:10:in `create'
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:33:10 -0500
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:33:19 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (3.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (5.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (175.37ms)
+Completed 200 OK in 1144ms (Views: 455.2ms | ActiveRecord: 60.9ms | Allocations: 2368954)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:33:25 -0500
+Processing by Api::V1::UsersController#index as */*
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (13.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mUser Load (10.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (22.4ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (58.58ms)
+  [1m[36mUser Load (136.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+Completed 200 OK in 632ms (Views: 176.2ms | ActiveRecord: 63.0ms | Allocations: 2686444)
+
+
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (52.13ms)
+Completed 200 OK in 695ms (Views: 172.0ms | ActiveRecord: 172.7ms | Allocations: 2942084)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 15:34:10 -0500
+  
+SyntaxError (/Users/freddyflores/flatiron/code/Mod4/Mod4-Project/Dating app backend/app/controllers/terms_controller.rb:25: syntax error, unexpected ')', expecting =>
+...permit(:terms => [], :username)
+...                              ^):
+  
+app/controllers/terms_controller.rb:25: syntax error, unexpected ')', expecting =>
+app/controllers/terms_controller.rb:25: syntax error, unexpected ')', expecting =>
+Started POST "/terms" for ::1 at 2020-07-07 15:35:59 -0500
+Processing by TermsController#create as */*
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "username"=>"test1", "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"]}}
+[31mUnpermitted parameter: :term[0m
+[31mUnpermitted parameter: :term[0m
+[31mUnpermitted parameter: :term[0m
+[31mUnpermitted parameter: :term[0m
+Completed 500 Internal Server Error in 367958ms (ActiveRecord: 13.3ms | Allocations: 130938)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/terms_controller.rb:10:in `create'
+Started POST "/terms" for ::1 at 2020-07-07 15:42:17 -0500
+Processing by TermsController#create as */*
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "username"=>"test1", "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"]}}
+[31mUnpermitted parameter: :term[0m
+  [1m[36mUser Load (14.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:7:in `create'
+[31mUnpermitted parameter: :term[0m
+Completed 500 Internal Server Error in 92526ms (ActiveRecord: 104.2ms | Allocations: 2462933)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `create'
+app/controllers/terms_controller.rb:15:in `create'
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:44:30 -0500
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (4.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.86ms)
+Completed 200 OK in 114ms (Views: 29.2ms | ActiveRecord: 37.3ms | Allocations: 10289)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 15:44:52 -0500
+Processing by TermsController#create as */*
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "username"=>"test1", "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"]}}
+[31mUnpermitted parameter: :term[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:7:in `create'
+[31mUnpermitted parameter: :term[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mTerm Create (4.3ms)[0m  [1m[32mINSERT INTO "terms" ("terms", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["terms", "javascript bbc news java stack overflow program number teams wschools over amazoncom online introduction dom tutorial angularjs angular display file factors knowledge developers huawei worlds"], ["user_id", 4], ["created_at", "2020-07-07 20:44:52.856129"], ["updated_at", "2020-07-07 20:44:52.856129"]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+Completed 204 No Content in 58ms (ActiveRecord: 12.0ms | Allocations: 10638)
+
+
+  [1m[36mTerm Load (0.6ms)[0m  [1m[34mSELECT "terms".* FROM "terms" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:48:08 -0500
+  [1m[35m (1.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.39ms)
+Completed 200 OK in 120ms (Views: 24.6ms | ActiveRecord: 54.0ms | Allocations: 10290)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 15:48:24 -0500
+Processing by TermsController#create as */*
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "username"=>"test1", "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"]}}
+[31mUnpermitted parameter: :term[0m
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:7:in `create'
+[31mUnpermitted parameter: :term[0m
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mTerm Create (1.0ms)[0m  [1m[32mINSERT INTO "terms" ("terms", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["terms", "javascript bbc news java stack overflow program number teams wschools over amazoncom online introduction dom tutorial angularjs angular display file factors knowledge developers huawei worlds"], ["user_id", 4], ["created_at", "2020-07-07 20:48:24.645586"], ["updated_at", "2020-07-07 20:48:24.645586"]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+Completed 204 No Content in 87ms (ActiveRecord: 11.2ms | Allocations: 8956)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:50:04 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (47.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (14.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.83ms)
+Completed 200 OK in 73ms (Views: 7.4ms | ActiveRecord: 62.0ms | Allocations: 2163)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 15:50:18 -0500
+Processing by TermsController#create as */*
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "username"=>"test1", "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"]}}
+[31mUnpermitted parameter: :term[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "test1"], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:7:in `create'
+[31mUnpermitted parameter: :term[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mTerm Create (1.1ms)[0m  [1m[32mINSERT INTO "terms" ("terms", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["terms", "javascript bbc news java stack overflow program number teams wschools over amazoncom online introduction dom tutorial angularjs angular display file factors knowledge developers huawei worlds"], ["user_id", 4], ["created_at", "2020-07-07 20:50:18.300834"], ["updated_at", "2020-07-07 20:50:18.300834"]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+Completed 204 No Content in 20ms (ActiveRecord: 3.6ms | Allocations: 4440)
+
+
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.9ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.4ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Destroy (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTerm Load (0.8ms)[0m  [1m[34mSELECT "terms".* FROM "terms"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTerm Destroy (0.5ms)[0m  [1m[31mDELETE FROM "terms" WHERE "terms"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTerm Destroy (0.4ms)[0m  [1m[31mDELETE FROM "terms" WHERE "terms"."id" = $1[0m  [["id", 2]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mTerm Destroy (0.5ms)[0m  [1m[31mDELETE FROM "terms" WHERE "terms"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Started POST "/api/v1/users" for ::1 at 2020-07-07 15:52:35 -0500
+  [1m[35m (1.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::UsersController#create as */*
+  Parameters: {"username"=>"new1", "password"=>"[FILTERED]", "user"=>{"username"=>"new1"}}
+[31mUnpermitted parameter: :user[0m
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "new1"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:8:in `create'
+  [1m[36mCACHE User Exists? (0.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE LOWER("users"."username") = LOWER($1) LIMIT $2[0m  [["username", "new1"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  [1m[36mUser Create (1.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["username", "new1"], ["password_digest", "$2a$12$YPVGwLgUw5o2W6WzY2cYp.85KA3mJkhu3oVLlG6zIVCKhsGjbV/ZW"], ["created_at", "2020-07-07 20:52:36.381743"], ["updated_at", "2020-07-07 20:52:36.381743"]]
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/v1/users_controller.rb:9:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (6.77ms)
+Completed 201 Created in 685ms (Views: 10.0ms | ActiveRecord: 17.2ms | Allocations: 11284)
+
+
+Started POST "/api/v1/login" for ::1 at 2020-07-07 15:52:43 -0500
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"username"=>"new1", "password"=>"[FILTERED]", "auth"=>{"username"=>"new1", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "new1"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:7:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.13ms)
+Completed 200 OK in 555ms (Views: 0.9ms | ActiveRecord: 0.7ms | Allocations: 1121)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 15:52:43 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.92ms)
+Completed 200 OK in 14ms (Views: 6.0ms | ActiveRecord: 3.8ms | Allocations: 2051)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 15:53:04 -0500
+Processing by TermsController#create as */*
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "username"=>"new1", "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"]}}
+[31mUnpermitted parameter: :term[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "new1"], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:7:in `create'
+[31mUnpermitted parameter: :term[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mTerm Create (0.9ms)[0m  [1m[32mINSERT INTO "terms" ("terms", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["terms", "javascript bbc news java stack overflow program number teams wschools over amazoncom online introduction dom tutorial angularjs angular display file factors knowledge developers huawei worlds"], ["user_id", 5], ["created_at", "2020-07-07 20:53:04.166686"], ["updated_at", "2020-07-07 20:53:04.166686"]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+Completed 204 No Content in 37ms (ActiveRecord: 7.5ms | Allocations: 8814)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:03:03 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (5.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.62ms)
+Completed 200 OK in 14ms (Views: 3.9ms | ActiveRecord: 6.0ms | Allocations: 1894)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:03:18 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.5ms)
+Completed 200 OK in 10ms (Views: 3.5ms | ActiveRecord: 4.6ms | Allocations: 1793)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:17:45 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (8.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (14.1ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.71ms)
+Completed 200 OK in 100ms (Views: 4.9ms | ActiveRecord: 87.4ms | Allocations: 1880)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:25:53 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (7.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (11.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.18ms)
+Completed 200 OK in 30ms (Views: 5.6ms | ActiveRecord: 19.7ms | Allocations: 1894)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:25:59 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.92ms)
+Completed 200 OK in 14ms (Views: 7.3ms | ActiveRecord: 4.7ms | Allocations: 1793)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:26:21 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (44.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.89ms)
+Completed 200 OK in 55ms (Views: 5.7ms | ActiveRecord: 45.9ms | Allocations: 1793)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:26:33 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (4.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.67ms)
+Completed 200 OK in 19ms (Views: 6.9ms | ActiveRecord: 5.3ms | Allocations: 1793)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 16:26:45 -0500
+Processing by TermsController#create as */*
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "username"=>"new1", "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"]}}
+[31mUnpermitted parameter: :term[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "new1"], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:7:in `create'
+[31mUnpermitted parameter: :term[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mTerm Create (1.5ms)[0m  [1m[32mINSERT INTO "terms" ("terms", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["terms", "javascript bbc news java stack overflow program number teams wschools over amazoncom online introduction dom tutorial angularjs angular display file factors knowledge developers huawei worlds"], ["user_id", 5], ["created_at", "2020-07-07 21:26:45.788989"], ["updated_at", "2020-07-07 21:26:45.788989"]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+Completed 204 No Content in 30ms (ActiveRecord: 4.1ms | Allocations: 4420)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:26:45 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.51ms)
+Completed 200 OK in 11ms (Views: 5.1ms | ActiveRecord: 1.1ms | Allocations: 1794)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:28:13 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (5.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (9.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.76ms)
+Completed 200 OK in 26ms (Views: 6.8ms | ActiveRecord: 15.1ms | Allocations: 1793)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:28:25 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (3.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (22.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.81ms)
+Completed 200 OK in 41ms (Views: 9.7ms | ActiveRecord: 25.7ms | Allocations: 1793)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 16:28:36 -0500
+Processing by TermsController#create as */*
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "username"=>"new1", "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"]}}
+[31mUnpermitted parameter: :term[0m
+  [1m[36mUser Load (39.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "new1"], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:7:in `create'
+[31mUnpermitted parameter: :term[0m
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mUser Load (8.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mTerm Create (20.2ms)[0m  [1m[32mINSERT INTO "terms" ("terms", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["terms", "javascript bbc news java stack overflow program number teams wschools over amazoncom online introduction dom tutorial angularjs angular display file factors knowledge developers huawei worlds"], ["user_id", 5], ["created_at", "2020-07-07 21:28:36.165769"], ["updated_at", "2020-07-07 21:28:36.165769"]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[35m (5.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+Completed 204 No Content in 100ms (ActiveRecord: 75.7ms | Allocations: 4421)
+
+
+Started GET "/terms" for ::1 at 2020-07-07 16:28:36 -0500
+Processing by TermsController#index as */*
+  [1m[36mTerm Load (0.7ms)[0m  [1m[34mSELECT "terms".* FROM "terms"[0m
+  ↳ app/controllers/terms_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.89ms)
+Completed 200 OK in 31ms (Views: 29.3ms | ActiveRecord: 0.7ms | Allocations: 3095)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:30:40 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (5.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.83ms)
+Completed 200 OK in 19ms (Views: 7.5ms | ActiveRecord: 6.7ms | Allocations: 1793)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 16:30:48 -0500
+Processing by TermsController#create as */*
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "username"=>"new1", "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"]}}
+[31mUnpermitted parameter: :term[0m
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "new1"], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:7:in `create'
+[31mUnpermitted parameter: :term[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mTerm Create (0.7ms)[0m  [1m[32mINSERT INTO "terms" ("terms", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["terms", "javascript bbc news java stack overflow program number teams wschools over amazoncom online introduction dom tutorial angularjs angular display file factors knowledge developers huawei worlds"], ["user_id", 5], ["created_at", "2020-07-07 21:30:48.888052"], ["updated_at", "2020-07-07 21:30:48.888052"]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+Completed 204 No Content in 62ms (ActiveRecord: 2.7ms | Allocations: 4424)
+
+
+Started GET "/terms" for ::1 at 2020-07-07 16:30:48 -0500
+Processing by TermsController#index as */*
+  [1m[36mTerm Load (0.5ms)[0m  [1m[34mSELECT "terms".* FROM "terms"[0m
+  ↳ app/controllers/terms_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.9ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.5ms | Allocations: 1335)
+
+
+  [1m[36mTerm Load (0.7ms)[0m  [1m[34mSELECT "terms".* FROM "terms" LIMIT $1[0m  [["LIMIT", 11]]
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:33:08 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (26.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.49ms)
+Completed 200 OK in 33ms (Views: 3.2ms | ActiveRecord: 26.5ms | Allocations: 1793)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:33:22 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (3.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.77ms)
+Completed 200 OK in 13ms (Views: 4.7ms | ActiveRecord: 5.2ms | Allocations: 1793)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:33:56 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (3.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (26.7ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.0ms)
+Completed 200 OK in 39ms (Views: 5.1ms | ActiveRecord: 30.5ms | Allocations: 1793)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 16:34:15 -0500
+Processing by TermsController#create as */*
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "username"=>"new1", "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"]}}
+[31mUnpermitted parameter: :term[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "new1"], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:7:in `create'
+[31mUnpermitted parameter: :term[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mTerm Create (0.5ms)[0m  [1m[32mINSERT INTO "terms" ("terms", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["terms", "javascript bbc news java stack overflow program number teams wschools over amazoncom online introduction dom tutorial angularjs angular display file factors knowledge developers huawei worlds"], ["user_id", 5], ["created_at", "2020-07-07 21:34:15.850757"], ["updated_at", "2020-07-07 21:34:15.850757"]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+Completed 204 No Content in 21ms (ActiveRecord: 2.8ms | Allocations: 4416)
+
+
+Started GET "/terms" for ::1 at 2020-07-07 16:34:15 -0500
+Processing by TermsController#index as JSON
+  Parameters: {"term"=>{}}
+  [1m[36mTerm Load (0.5ms)[0m  [1m[34mSELECT "terms".* FROM "terms"[0m
+  ↳ app/controllers/terms_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.27ms)
+Completed 200 OK in 5ms (Views: 4.1ms | ActiveRecord: 0.5ms | Allocations: 1422)
+
+
+Started GET "/" for ::1 at 2020-07-07 16:35:06 -0500
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/freddyflores/.rvm/gems/ruby-2.6.1/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/freddyflores/.rvm/gems/ruby-2.6.1/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 19.0ms | Allocations: 480)
+Completed 200 OK in 58ms (Views: 34.4ms | ActiveRecord: 0.0ms | Allocations: 2917)
+
+
+Started GET "/terms" for ::1 at 2020-07-07 16:35:12 -0500
+Processing by TermsController#index as HTML
+  [1m[36mTerm Load (0.6ms)[0m  [1m[34mSELECT "terms".* FROM "terms"[0m
+  ↳ app/controllers/terms_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.62ms)
+Completed 200 OK in 57ms (Views: 33.5ms | ActiveRecord: 16.1ms | Allocations: 5587)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:36:00 -0500
+  
+ArgumentError (Before process_action callback :logged_in? has not been defined):
+  
+app/controllers/api/v1/users_controller.rb:2:in `<class:UsersController>'
+app/controllers/api/v1/users_controller.rb:1:in `<main>'
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:46:19 -0500
+  
+SyntaxError (/Users/freddyflores/flatiron/code/Mod4/Mod4-Project/Dating app backend/app/controllers/api/v1/users_controller.rb:18: syntax error, unexpected '(', expecting end
+      render json: @users(:only => [:id,:username,:term...
+                         ^
+/Users/freddyflores/flatiron/code/Mod4/Mod4-Project/Dating app backend/app/controllers/api/v1/users_controller.rb:18: syntax error, unexpected ':', expecting end
+...nly => [:id,:username,:terms] :include => :terms)
+...                              ^
+/Users/freddyflores/flatiron/code/Mod4/Mod4-Project/Dating app backend/app/controllers/api/v1/users_controller.rb:27: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/api/v1/users_controller.rb:18: syntax error, unexpected '(', expecting end
+app/controllers/api/v1/users_controller.rb:18: syntax error, unexpected ':', expecting end
+app/controllers/api/v1/users_controller.rb:27: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/users_controller.rb:18: syntax error, unexpected '(', expecting end
+app/controllers/api/v1/users_controller.rb:18: syntax error, unexpected ':', expecting end
+app/controllers/api/v1/users_controller.rb:27: syntax error, unexpected end-of-input, expecting end
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:47:18 -0500
+  
+SyntaxError (/Users/freddyflores/flatiron/code/Mod4/Mod4-Project/Dating app backend/app/controllers/api/v1/users_controller.rb:18: syntax error, unexpected '(', expecting end
+      render json: @users(:include => :terms)
+                         ^
+/Users/freddyflores/flatiron/code/Mod4/Mod4-Project/Dating app backend/app/controllers/api/v1/users_controller.rb:27: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/api/v1/users_controller.rb:18: syntax error, unexpected '(', expecting end
+app/controllers/api/v1/users_controller.rb:27: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/users_controller.rb:18: syntax error, unexpected '(', expecting end
+app/controllers/api/v1/users_controller.rb:27: syntax error, unexpected end-of-input, expecting end
+Started GET "/terms" for ::1 at 2020-07-07 16:47:27 -0500
+  
+SyntaxError (/Users/freddyflores/flatiron/code/Mod4/Mod4-Project/Dating app backend/app/controllers/terms_controller.rb:18: syntax error, unexpected ':', expecting end
+      render json: @terms :only => [:id,:terms,:user_id]
+                          ^):
+  
+app/controllers/terms_controller.rb:18: syntax error, unexpected ':', expecting end
+app/controllers/terms_controller.rb:18: syntax error, unexpected ':', expecting end
+Started GET "/terms" for ::1 at 2020-07-07 16:47:55 -0500
+  
+SyntaxError (/Users/freddyflores/flatiron/code/Mod4/Mod4-Project/Dating app backend/app/controllers/terms_controller.rb:18: syntax error, unexpected '(', expecting end
+      render json: @terms(:only => [:id,:terms,:user_id...
+                         ^
+/Users/freddyflores/flatiron/code/Mod4/Mod4-Project/Dating app backend/app/controllers/terms_controller.rb:18: syntax error, unexpected ')', expecting end
+...:only => [:id,:terms,:user_id])
+...                              ^
+/Users/freddyflores/flatiron/code/Mod4/Mod4-Project/Dating app backend/app/controllers/terms_controller.rb:32: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/terms_controller.rb:18: syntax error, unexpected '(', expecting end
+app/controllers/terms_controller.rb:18: syntax error, unexpected ')', expecting end
+app/controllers/terms_controller.rb:32: syntax error, unexpected end-of-input, expecting end
+app/controllers/terms_controller.rb:18: syntax error, unexpected '(', expecting end
+app/controllers/terms_controller.rb:18: syntax error, unexpected ')', expecting end
+app/controllers/terms_controller.rb:32: syntax error, unexpected end-of-input, expecting end
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:48:14 -0500
+  
+SyntaxError (/Users/freddyflores/flatiron/code/Mod4/Mod4-Project/Dating app backend/app/controllers/api/v1/users_controller.rb:18: syntax error, unexpected '(', expecting end
+      render json: @users(:include => :terms)
+                         ^
+/Users/freddyflores/flatiron/code/Mod4/Mod4-Project/Dating app backend/app/controllers/api/v1/users_controller.rb:27: syntax error, unexpected end-of-input, expecting end):
+  
+app/controllers/api/v1/users_controller.rb:18: syntax error, unexpected '(', expecting end
+app/controllers/api/v1/users_controller.rb:27: syntax error, unexpected end-of-input, expecting end
+app/controllers/api/v1/users_controller.rb:18: syntax error, unexpected '(', expecting end
+app/controllers/api/v1/users_controller.rb:27: syntax error, unexpected end-of-input, expecting end
+Started GET "/api/v1/users" for ::1 at 2020-07-07 16:48:48 -0500
+Processing by Api::V1::UsersController#index as */*
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (2.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.36ms)
+Completed 200 OK in 95ms (Views: 8.5ms | ActiveRecord: 48.4ms | Allocations: 8102)
+
+
+Started POST "/terms" for ::1 at 2020-07-07 16:49:01 -0500
+Processing by TermsController#create as */*
+  Parameters: {"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"], "username"=>"new1", "term"=>{"terms"=>["javascript", "bbc", "news", "java", "stack", "overflow", "program", "number", "teams", "wschools", "over", "amazoncom", "online", "introduction", "dom", "tutorial", "angularjs", "angular", "display", "file", "factors", "knowledge", "developers", "huawei", "worlds"]}}
+[31mUnpermitted parameter: :term[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "new1"], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:7:in `create'
+[31mUnpermitted parameter: :term[0m
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[36mTerm Create (2.0ms)[0m  [1m[32mINSERT INTO "terms" ("terms", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["terms", "javascript bbc news java stack overflow program number teams wschools over amazoncom online introduction dom tutorial angularjs angular display file factors knowledge developers huawei worlds"], ["user_id", 5], ["created_at", "2020-07-07 21:49:01.253781"], ["updated_at", "2020-07-07 21:49:01.253781"]]
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/terms_controller.rb:13:in `create'
+Completed 204 No Content in 36ms (ActiveRecord: 11.6ms | Allocations: 7622)
+
+
+Started GET "/terms" for ::1 at 2020-07-07 16:49:01 -0500
+Processing by TermsController#index as JSON
+  Parameters: {"term"=>{}}
+  [1m[36mTerm Load (0.6ms)[0m  [1m[34mSELECT "terms".* FROM "terms"[0m
+  ↳ app/controllers/terms_controller.rb:18:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.54ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.6ms | Allocations: 1820)
+>>>>>>> f651787d86ab0963abe5c69852fe36c19b2d8112
 
 
