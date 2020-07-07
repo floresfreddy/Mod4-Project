@@ -61,7 +61,7 @@ class Form extends React.Component {
         return frequency[b] - frequency[a];
     });
 
-   console.log(Object.entries(frequency).sort((a,b)=> b[1]-a[1]))
+   let finishedArray = Object.entries(frequency).sort((a,b)=> b[1]-a[1])
 
 
   }
