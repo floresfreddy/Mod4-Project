@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import MatchTileList from './MatchTileList.js'
 import SearchTermList from './SearchTermList.js'
 import Form from './Form.js'
+import MessageList from "./MessageList.js"
 
 
 class MainContainer extends React.Component {
@@ -52,7 +53,7 @@ class MainContainer extends React.Component {
         case 'match':
           return <Form setTerms={this.setTermsList} selectedLink={this.props.selectedLink}/>
         case 'messages':
-          return <h1>Messages go here</h1>
+          return <MessageList users={this.props.users}/>
         case 'matches': 
           return <MatchTileList users={this.props.users}/>
         case 'searchTerms': 
