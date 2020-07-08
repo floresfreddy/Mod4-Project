@@ -40,34 +40,34 @@ class Profile extends React.Component {
           
         }
       )
-      .then(this.matches())
+      // .then(this.matches())
       
   }
 
-  matches = () => {
-    if(this.state.users === []){
-      this.matches()
-    }
-    else{
+  // matches = () => {
+  //   if(this.state.users === []){
+  //     this.matches()
+  //   }
+  //   else{
       
-      let user = this.state.users.find(user => user.username == localStorage.getItem('user'))
+  //     let user = this.state.users.find(user => user.username == localStorage.getItem('user'))
 
 
-      const matches = this.state.users.sort((a,b) => {
-        let aMatches = user.terms[0].terms.filter((term)=>{return a.terms[0].terms.includes(term)}).length
-        let bMatches = user.terms[0].terms.filter((term)=>{return b.terms[0].terms.includes(term)}).length
+  //     const matches = this.state.users.sort((a,b) => {
+  //       let aMatches = user.terms[0].terms.filter((term)=>{return a.terms[0].terms.includes(term)}).length
+  //       let bMatches = user.terms[0].terms.filter((term)=>{return b.terms[0].terms.includes(term)}).length
 
 
-        return bMatches - aMatches
-      })
+  //       return bMatches - aMatches
+  //     })
 
-      this.setState({
-        matches: matches
-      })
-      console.log('mathces', matches)
-    }
+  //     this.setState({
+  //       matches: matches
+  //     })
+  //     console.log('mathces', matches)
+  //   }
     
-  }
+  // }
 
   render() {
     return(

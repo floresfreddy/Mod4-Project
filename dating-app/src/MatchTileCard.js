@@ -5,6 +5,11 @@ import Messages from './Messages.js'
 
 class MatchTileCard extends React.Component{
 
+    delete = () =>{
+        this.props.deleteMatch(this.props.user)
+    }
+
+
     render(){
         return(
             <div>
@@ -19,7 +24,7 @@ class MatchTileCard extends React.Component{
                         </Card.Content>
                         <Card.Content extra className="center">
                             <Messages user={this.props.user} allusers={this.props.allUsers}/>
-                            <Button>Delete</Button>
+                            <Button onClick={(e)=> this.delete()}>Delete</Button>
                         </Card.Content>
                     </Card>
             </div>
