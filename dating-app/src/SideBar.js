@@ -52,10 +52,13 @@ searchTerms=()=>{
                    <Icon name="connectdevelop"/> Matches 
                 </p>
              
+                <p className="text-center user-description hidden-xs" onClick={this.messages}>
+                    <Icon name="Messages"/>Messages
+                </p>
+
                 <p className="text-center user-description hidden-xs" onClick={this.logout}>
                     <Icon name="log out"/>Logout
                 </p>
-
 
               </div>
             : this.props.history.push("/login")

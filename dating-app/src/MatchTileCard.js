@@ -1,7 +1,7 @@
 import React from 'react'
 import { Card, Image, Button} from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
-import Message from './Messages.js'
+import Messages from './Messages.js'
 
 class MatchTileCard extends React.Component{
 
@@ -18,7 +18,7 @@ class MatchTileCard extends React.Component{
                         </Card.Description>
                         </Card.Content>
                         <Card.Content extra className="center">
-                            <Message/>
+                            <Messages user={this.props.user}/>
                             <Button>Delete</Button>
                         </Card.Content>
                     </Card>
