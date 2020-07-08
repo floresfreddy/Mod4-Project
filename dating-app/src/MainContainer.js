@@ -25,7 +25,26 @@ class MainContainer extends React.Component {
     })
   }
 
+  submitTerms=()=>{
+    console.log(this.state.filteredTerms)
+      fetch("http://localhost:3000/terms",
+  {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${localStorage.token}`,
+      "Content-Type" : "application/json"
+    },
+    body: JSON.stringify({
+       terms: this.state.filteredTerms,
+       // 'username': localStorage.getItem('user')
+       username: localStorage.getItem('user')
+     })
+  })
+  .then(res => 
+    console.log(res)
+  )
 
+  }
 
 
   renderSwitch(param) {
@@ -37,7 +56,7 @@ class MainContainer extends React.Component {
         case 'matches': 
           return <MatchTileList users={this.props.users}/>
         case 'searchTerms': 
-          return <SearchTermList terms={this.state.filteredTerms} filter={this.filter}/>
+          return <SearchTermList terms={this.state.filteredTerms} submitTerms={this.submitTerms} filter={this.filter}/>
         default: 
           return null; 
       }
