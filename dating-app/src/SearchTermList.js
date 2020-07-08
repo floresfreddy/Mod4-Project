@@ -8,14 +8,20 @@ class SearchTermList extends React.Component{
     terms: []
   }
 
+sendTerms=()=>{
+  this.props.submitTerms()
+}
+
 render(){
     return(
   <div style={{
     position: 'relative', left: '50%', top: '50%'
 }}>
+    <br/>
+    <br/>
     <h1>My Search Words</h1>
       <p>Choose up to 10 Search Words to get Matched. Click on the words you would like to delete:</p>
-      <Button>Submit Your Search Words</Button>
+      <Button onClick={this.sendTerms}>Submit Your Search Words</Button>
       <br/> 
       <br/> 
       {this.props.terms.map(term => <SearchTermCard term={term} key={term} filter={this.props.filter}/>)}

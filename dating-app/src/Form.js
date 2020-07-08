@@ -70,29 +70,9 @@ class Form extends React.Component {
 
    topArray.forEach(t=> topTerms.push(t[0]))
 
-
-   fetch("http://localhost:3000/terms",
-   {
-     method: "POST",
-     headers: {
-      //  "Authorization": `Bearer ${localStorage.token}`,
-       "Content-Type" : "application/json"
-     },
-     body: JSON.stringify({
-        terms: topTerms,
-        // 'username': localStorage.getItem('user')
-        username: localStorage.getItem('user')
-      })
-   })
-   .then(res => this.props.setTerms(topTerms)
-
-   )
-
+  this.props.setTerms(topTerms)
   }
 
-
-
-  
   render() {
     return(
       <div style={{
@@ -100,11 +80,16 @@ class Form extends React.Component {
         transform: 'translate(-50%, -50%)'
     }}>
         <img alt="logo" src={require('./dating.jpg')}></img>
+        <br/>
+        <br/>
           <Step.Group>
             <Step>
               <Icon name='download' />
               <Step.Content>
-                <Step.Title>Step 1: Download your history using this extension</Step.Title>
+                <Step.Title>STEP 1: 
+                  <br/>
+                  <br/>
+                  Download your history using this extension</Step.Title>
                   <Step.Description>
                     <br/>
                     <a href='https://chrome.google.com/webstore/detail/history-export/lpmoaclacdaofhlijejogfldmgkdlglj'>DOWNLOAD EXTENSION</a>
@@ -117,7 +102,10 @@ class Form extends React.Component {
             <Step>
               <Icon name='upload' />
               <Step.Content>
-                <Step.Title>Step 2: Upload your file here</Step.Title>
+                <Step.Title>STEP 2: 
+                  <br/>
+                  <br/>
+                  Upload your file here</Step.Title>
                 <br/>
                   <Step.Description>
                     <input type='file' onChange={this.onFileChange}/>

@@ -25,19 +25,38 @@ class MainContainer extends React.Component {
     })
   }
 
+  submitTerms=()=>{
+    console.log(this.state.filteredTerms)
+      fetch("http://localhost:3000/terms",
+  {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${localStorage.token}`,
+      "Content-Type" : "application/json"
+    },
+    body: JSON.stringify({
+       terms: this.state.filteredTerms,
+       // 'username': localStorage.getItem('user')
+       username: localStorage.getItem('user')
+     })
+  })
+  .then(res => 
+    console.log(res)
+  )
 
+  }
 
 
   renderSwitch(param) {
       switch(param) {
-        case 'home' :
-          return <h1>Home</h1>
         case 'match':
           return <Form setTerms={this.setTermsList} selectedLink={this.props.selectedLink}/>
+        case 'messages':
+          return <h1>Messages go here</h1>
         case 'matches': 
           return <MatchTileList users={this.props.users}/>
         case 'searchTerms': 
-          return <SearchTermList terms={this.state.filteredTerms} filter={this.filter}/>
+          return <SearchTermList terms={this.state.filteredTerms} submitTerms={this.submitTerms} filter={this.filter}/>
         default: 
           return null; 
       }
