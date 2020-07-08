@@ -6,6 +6,7 @@ class Api::V1::UsersController < ApplicationController
       user = User.new(user_params)
   
       if user.valid?
+        user.avatar="https://picsum.photos/#{rand(1..300)}"
         user.save
         Term.create(terms: "", user_id:user.id)
         render json: {user: UserSerializer.new(user)}, status: :created

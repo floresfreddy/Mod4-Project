@@ -10,7 +10,7 @@ class MatchTileCard extends React.Component{
             <div>
                 <br/>
                     <Card>
-                        <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png'wrapped ui={false} />
+                        <Image src={this.props.user.avatar} wrapped ui={false} />
                         <Card.Content>
                         <Card.Header>{this.props.user.username}</Card.Header>
                         <Card.Description>
