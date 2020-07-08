@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :messages
   resources :terms, only: [:create, :index, :update]
   # localhost:3000/api/v1/login
   namespace :api do
