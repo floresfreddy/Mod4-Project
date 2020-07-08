@@ -7,6 +7,7 @@ class Api::V1::UsersController < ApplicationController
   
       if user.valid?
         user.save
+        Term.create(terms: "", user_id:user.id)
         render json: {user: UserSerializer.new(user)}, status: :created
       else
         render json: {error: "Please try again"}, status: :not_acceptable

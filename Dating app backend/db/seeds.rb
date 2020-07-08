@@ -10,5 +10,6 @@ User.destroy_all
 Term.destroy_all
 
 20.times do 
-    User.create(username: Faker::Name.name, password_digest: Faker::Code.npi, bio: Faker::Quote.famous_last_words, avatar: '')
+    user = User.create(username: Faker::Name.name, password_digest: Faker::Code.npi, bio: Faker::Quote.famous_last_words, avatar: '')
+    Term.create(terms:"", user_id:user.id)
 end 

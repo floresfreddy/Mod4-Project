@@ -11,6 +11,7 @@ class Profile extends React.Component {
   state={
     users: [],
     selected: 'match',
+    matches: []
   }
 
   selectedLink=(value)=>{
@@ -33,11 +34,39 @@ class Profile extends React.Component {
       .then(data => 
         {
           console.log(data)
-        this.setState({
-          users: data
-        })
-      }
+          this.setState({
+            users: data
+          })
+          
+        }
       )
+      .then(this.matches())
+      
+  }
+
+  matches = () => {
+    if(this.state.users === []){
+      this.matches()
+    }
+    else{
+      
+      let user = this.state.users.find(user => user.username == localStorage.getItem('user'))
+
+
+      const matches = this.state.users.sort((a,b) => {
+        let aMatches = user.terms[0].terms.filter((term)=>{return a.terms[0].terms.includes(term)}).length
+        let bMatches = user.terms[0].terms.filter((term)=>{return b.terms[0].terms.includes(term)}).length
+
+
+        return bMatches - aMatches
+      })
+
+      this.setState({
+        matches: matches
+      })
+      console.log('mathces', matches)
+    }
+    
   }
 
   render() {
@@ -47,7 +76,7 @@ class Profile extends React.Component {
          ? <div>
               <SideBar selectedLink={this.selectedLink} users={this.state.users}/>
               <NavBar selectedLink={this.selectedLink}/>
-              <MainContainer selection={this.state.selected} users={this.state.users} selectedLink={this.selectedLink}/>
+              <MainContainer selection={this.state.selected} users={this.state.users} selectedLink={this.selectedLink} matches={this.state.matches}/>
            </div>
          : <Login/>
          }
