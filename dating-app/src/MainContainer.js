@@ -8,44 +8,36 @@ import Form from './Form.js'
 class MainContainer extends React.Component {
 
   state = {
-    terms: []
+    terms: [],
+    filteredTerms: []
   }
 
   setTermsList = (terms) => {
     this.setState({
-      terms: terms 
+      terms: terms, 
+      filteredTerms: terms
     })
-
-    fetch("http://localhost:3000/terms",
-      {
-        method: "GET",
-        headers: {
-          "Authorization": `Bearer ${localStorage.token}`,
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        } 
-      })
-      .then(res => res.json())
-      .then(data => 
-        {
-          console.log(data)
-      }
-      )
-
   }
 
+  filter=(term)=>{
+    this.setState({
+      filteredTerms: this.state.filteredTerms.filter(word=> word !== term)
+    })
+  }
 
 
 
 
   renderSwitch(param) {
       switch(param) {
+        case 'home' :
+          return <h1>Home</h1>
         case 'match':
           return <Form setTerms={this.setTermsList} selectedLink={this.props.selectedLink}/>
         case 'matches': 
           return <MatchTileList users={this.props.users}/>
         case 'searchTerms': 
-          return <SearchTermList terms={this.state.terms}/>
+          return <SearchTermList terms={this.state.filteredTerms} filter={this.filter}/>
         default: 
           return null; 
       }

@@ -9,7 +9,8 @@ import SideBar from "./SideBar.js"
 
 class Profile extends React.Component {
   state={
-    selected: null,
+    users: [],
+    selected: 'home',
   }
 
   selectedLink=(value)=>{

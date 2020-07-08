@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import { Icon, Step } from 'semantic-ui-react'
 
 class Form extends React.Component {
   
@@ -94,14 +95,43 @@ class Form extends React.Component {
   
   render() {
     return(
-      <div>
-        <p>download your history using this extenxion</p>
-        <a href='https://chrome.google.com/webstore/detail/history-export/lpmoaclacdaofhlijejogfldmgkdlglj'>Extension</a>
-        <br/>
-        <br></br>
-        <p>Upload your file here</p>
+      <div style={{
+        position: 'absolute', left: '50%', top: '50%',
+        transform: 'translate(-50%, -50%)'
+    }}>
+        <img alt="logo" src={require('./dating.jpg')}></img>
+          <Step.Group>
+            <Step>
+              <Icon name='download' />
+              <Step.Content>
+                <Step.Title>Step 1: Download your history using this extension</Step.Title>
+                  <Step.Description>
+                    <br/>
+                    <a href='https://chrome.google.com/webstore/detail/history-export/lpmoaclacdaofhlijejogfldmgkdlglj'>DOWNLOAD EXTENSION</a>
+                  <br/>
+                  <br></br>
+                  </Step.Description>
+              </Step.Content>
+            </Step>
+
+            <Step>
+              <Icon name='upload' />
+              <Step.Content>
+                <Step.Title>Step 2: Upload your file here</Step.Title>
+                <br/>
+                  <Step.Description>
+                    <input type='file' onChange={this.onFileChange}/>
+                  <button onClick={this.onFileUpload}>Upload</button>
+                  </Step.Description>
+              </Step.Content>
+            </Step>
+        
+          </Step.Group>
+        
+      
+        {/* <p>Upload your file here</p>
         <input type='file' onChange={this.onFileChange}/>
-        <button onClick={this.onFileUpload}>Upload</button>
+        <button onClick={this.onFileUpload}>Upload</button> */}
        
       </div>
     )

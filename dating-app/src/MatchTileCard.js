@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Icon, Image, Button } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
 
 class MatchTileCard extends React.Component{
@@ -8,21 +8,22 @@ class MatchTileCard extends React.Component{
             <div>
                 <br/>
                     <Card>
-                        <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+                        <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png'wrapped ui={false} />
                         <Card.Content>
                         <Card.Header>{this.props.user.username}</Card.Header>
-                        <Card.Meta>
+                        {/* <Card.Meta>
                             <span className='date'>Joined in 2015</span>
-                        </Card.Meta>
+                        </Card.Meta> */}
                         <Card.Description>
-                            Matthew is a musician living in Nashville.
+                            {this.props.user.bio}
                         </Card.Description>
                         </Card.Content>
                         <Card.Content extra>
                         <a>
                             <Icon name='user' />
-                            22 Friends
+                          
                         </a>
+                        <Button>Message</Button>
                         </Card.Content>
                     </Card>
             </div>

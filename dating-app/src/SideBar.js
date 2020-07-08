@@ -34,7 +34,7 @@ searchTerms=()=>{
             ? <div className="sidebar-nav">
                 <img src={require('./user.jpg')}alt="User name" className="img-circle img-user"></img>
         <h2 className="text-center hidden-xs">{localStorage.getItem("user")}'s Profile</h2>
-
+                
                 <p onClick={this.match} className="text-center user-description hidden-xs">
                     Get Matched!
                 </p>

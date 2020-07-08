@@ -1,5 +1,6 @@
 import React from 'react'
 import './styles.css'
+import { Icon } from 'semantic-ui-react'
 
 function NavBar(){
 
@@ -9,7 +10,7 @@ function NavBar(){
     
     return(
         <div className="nav"> 
-            {/* put nav items here */}
+            <Icon name='feed'/>
         </div>
   
        
