@@ -5,6 +5,11 @@ import MatchTileCard from './MatchTileCard.js'
 
 class MatchTileList extends React.Component{
     render(){
+        if (this.props.users.length === 0){
+            return (
+                <h1>No Current Matches</h1>
+            )
+        }
         return(
             <div>
                 <br/>

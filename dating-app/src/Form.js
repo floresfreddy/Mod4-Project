@@ -1,4 +1,6 @@
 import React from 'react';
+import { withRouter } from 'react-router-dom';
+import { Icon, Step } from 'semantic-ui-react'
 
 class Form extends React.Component {
   
@@ -13,6 +15,7 @@ class Form extends React.Component {
   }
 
   onFileUpload = () => {
+   this.props.selectedLink("searchTerms")
     if(this.state.selectedFile){
       const reader = new FileReader();
       reader.onload = this.onReaderLoad;
@@ -67,40 +70,60 @@ class Form extends React.Component {
 
    topArray.forEach(t=> topTerms.push(t[0]))
 
-
-   fetch("http://localhost:3000/terms",
-   {
-     method: "POST",
-     headers: {
-      //  "Authorization": `Bearer ${localStorage.token}`,
-       "Content-Type" : "application/json"
-     },
-     body: JSON.stringify({
-        terms: topTerms,
-        // 'username': localStorage.getItem('user')
-        username: localStorage.getItem('user')
-      })
-   })
-   .then(res => this.props.setTerms(topTerms))
+  this.props.setTerms(topTerms)
   }
 
-
-
-  
   render() {
     return(
-      <div>
-        <p>download your history using this extenxion</p>
-        <a href='https://chrome.google.com/webstore/detail/history-export/lpmoaclacdaofhlijejogfldmgkdlglj'>Extension</a>
+      <div style={{
+        position: 'absolute', left: '50%', top: '50%',
+        transform: 'translate(-50%, -50%)'
+    }}>
+        <img alt="logo" src={require('./dating.jpg')}></img>
         <br/>
-        <br></br>
-        <p>Upload your file here</p>
+        <br/>
+          <Step.Group>
+            <Step>
+              <Icon name='download' />
+              <Step.Content>
+                <Step.Title>STEP 1: 
+                  <br/>
+                  <br/>
+                  Download your history using this extension</Step.Title>
+                  <Step.Description>
+                    <br/>
+                    <a href='https://chrome.google.com/webstore/detail/history-export/lpmoaclacdaofhlijejogfldmgkdlglj'>DOWNLOAD EXTENSION</a>
+                  <br/>
+                  <br></br>
+                  </Step.Description>
+              </Step.Content>
+            </Step>
+
+            <Step>
+              <Icon name='upload' />
+              <Step.Content>
+                <Step.Title>STEP 2: 
+                  <br/>
+                  <br/>
+                  Upload your file here</Step.Title>
+                <br/>
+                  <Step.Description>
+                    <input type='file' onChange={this.onFileChange}/>
+                  <button onClick={this.onFileUpload}>Upload</button>
+                  </Step.Description>
+              </Step.Content>
+            </Step>
+        
+          </Step.Group>
+        
+      
+        {/* <p>Upload your file here</p>
         <input type='file' onChange={this.onFileChange}/>
-        <button onClick={this.onFileUpload}>Upload</button>
+        <button onClick={this.onFileUpload}>Upload</button> */}
        
       </div>
     )
   }
 }
 
-export default Form;
+export default withRouter(Form)

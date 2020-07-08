@@ -9,7 +9,7 @@ body{
 .bg-img{
    
     background-image: url("urban.jpg");
-    min-height: 1000px;
+    min-height: 1300px;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -62,7 +62,7 @@ html, body, .sidebar-nav, .content-posts {
 }
 
 .nav{
-    background-color: rgb(21, 49, 109);
+    background-color: rgb(79, 84, 97);
     height: 50px;
 }
 
@@ -70,3 +70,37 @@ html, body, .sidebar-nav, .content-posts {
     margin-left: 275px;
     float: left;
 }
+
+.center {
+    text-align: center;
+}
+
+.icon_nav{
+    float: right;
+}
+
+.navbar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+  }
+  
+  .navbar a {
+    float: right;
+    padding: 12px;
+    color: white;
+    text-decoration: none;
+    font-size: 17px;
+  }
+  
+  
+  .active {
+    background-color: #4CAF50;
+  }
+  
+  @media screen and (max-width: 500px) {
+    .navbar a {
+      float: none;
+      display: block;
+    }
+  }

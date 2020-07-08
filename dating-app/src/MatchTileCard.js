@@ -1,28 +1,25 @@
 import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Image, Button} from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
+import Message from './Messages.js'
 
 class MatchTileCard extends React.Component{
+
     render(){
         return(
             <div>
                 <br/>
                     <Card>
-                        <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' wrapped ui={false} />
+                        <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png'wrapped ui={false} />
                         <Card.Content>
                         <Card.Header>{this.props.user.username}</Card.Header>
-                        <Card.Meta>
-                            <span className='date'>Joined in 2015</span>
-                        </Card.Meta>
                         <Card.Description>
-                            Matthew is a musician living in Nashville.
+                            {this.props.user.bio}
                         </Card.Description>
                         </Card.Content>
-                        <Card.Content extra>
-                        <a>
-                            <Icon name='user' />
-                            22 Friends
-                        </a>
+                        <Card.Content extra className="center">
+                            <Message/>
+                            <Button>Delete</Button>
                         </Card.Content>
                     </Card>
             </div>
