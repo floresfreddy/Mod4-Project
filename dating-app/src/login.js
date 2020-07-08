@@ -36,9 +36,11 @@ class Login extends Component{
         .then(res =>  res.json())
         .then(userInfo => 
             {
+                console.log(userInfo)
             localStorage.token = userInfo.token 
             localStorage.user = this.state.username 
-            this.props.history.push("/profile")
+            
+            this.props.history.push("/profile") 
         }
         )
         

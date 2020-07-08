@@ -10,13 +10,15 @@ class MainContainer extends React.Component {
 
   state = {
     terms: [],
-    filteredTerms: []
+    filteredTerms: [],
+    matchedUsers: this.props.matches
   }
 
   setTermsList = (terms) => {
     this.setState({
       terms: terms, 
       filteredTerms: terms
+
     })
   }
 
@@ -29,23 +31,42 @@ class MainContainer extends React.Component {
   submitTerms=()=>{
     console.log(this.state.filteredTerms)
       fetch("http://localhost:3000/terms",
-  {
-    method: "POST",
-    headers: {
-      "Authorization": `Bearer ${localStorage.token}`,
-      "Content-Type" : "application/json"
-    },
-    body: JSON.stringify({
-       terms: this.state.filteredTerms,
-       // 'username': localStorage.getItem('user')
-       username: localStorage.getItem('user')
-     })
-  })
-  .then(res => 
-    console.log(res)
-  )
+      {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${localStorage.token}`,
+          "Content-Type" : "application/json"
+        },
+        body: JSON.stringify({
+            terms: this.state.filteredTerms,
+            // 'username': localStorage.getItem('user')
+            username: localStorage.getItem('user')
+          })
+      })
 
+    this.makeMatches()
+  
   }
+
+
+  makeMatches = () => {
+
+
+    let matches = this.props.users.sort((a,b) => {
+                    var aMatches = this.state.filteredTerms.filter((term)=>{return a.terms[0].terms.includes(term)}).length
+                    var bMatches = this.state.filteredTerms.filter((term)=>{return b.terms[0].terms.includes(term)}).length
+
+
+                    return bMatches - aMatches
+                  })
+    console.log("matches", matches)
+    this.setState({
+      matchedUsers: matches
+    })
+  
+  }
+
+
 
 
   renderSwitch(param) {
@@ -55,7 +76,7 @@ class MainContainer extends React.Component {
         case 'messages':
           return <MessageList users={this.props.users}/>
         case 'matches': 
-          return <MatchTileList users={this.props.users}/>
+          return <MatchTileList users={this.state.matchedUsers} />
         case 'searchTerms': 
           return <SearchTermList terms={this.state.filteredTerms} submitTerms={this.submitTerms} filter={this.filter}/>
         default: 
