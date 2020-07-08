@@ -17,10 +17,6 @@ class MainContainer extends React.Component {
       terms: terms, 
       filteredTerms: terms
     })
-<<<<<<< HEAD
-=======
-
->>>>>>> 827ebe3698ed09a677c605a6ec89a85c5d89d62f
   }
 
   filter=(term)=>{
@@ -34,8 +30,6 @@ class MainContainer extends React.Component {
 
   renderSwitch(param) {
       switch(param) {
-        case 'home' :
-          return <h1>Home</h1>
         case 'match':
           return <Form setTerms={this.setTermsList} selectedLink={this.props.selectedLink}/>
         case 'matches': 

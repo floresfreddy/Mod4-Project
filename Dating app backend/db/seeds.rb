@@ -10,5 +10,5 @@ User.destroy_all
 Term.destroy_all
 
 20.times do 
-    User.create(username: Faker::Name.name, password_digest: Faker::Code.npi, bio: Faker::Quote.famous_last_words, avatar: "https://picsum.photos" )
+    User.create(username: Faker::Name.name, password_digest: Faker::Code.npi, bio: Faker::Quote.famous_last_words, avatar: '')
 end 

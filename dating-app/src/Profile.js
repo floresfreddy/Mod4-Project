@@ -10,7 +10,7 @@ import SideBar from "./SideBar.js"
 class Profile extends React.Component {
   state={
     users: [],
-    selected: 'home',
+    selected: 'match',
   }
 
   selectedLink=(value)=>{
