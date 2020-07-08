@@ -32,6 +32,7 @@ class MessageList extends React.Component{
     render(){
         let currentUser= this.props.users.find(user => user.username===localStorage.getItem("user"))
         let receivingMessages= this.state.messages.filter(user=> user.user_id === currentUser.id)
+        let sendingMessages= this.state.messages.filter(user=> user.sender_id === currentUser.id)
         if (receivingMessages === null){
             return(
                 <h1>No Current Messages Received</h1>
@@ -41,10 +42,24 @@ class MessageList extends React.Component{
         <div>
             <br/>
             <br/>
-            <Card.Group>
-                {receivingMessages.map(message => 
-                    <MessageCard message={message} allUsers={this.props.users}/>)}
-            </Card.Group>
+            <Grid columns={2} relaxed='very' stackable>
+                <Grid.Column >
+                    <h1>MESSAGES RECEIVED:</h1>
+                        <Card.Group>
+                            {receivingMessages.map(message => 
+                                <MessageCard message={message} allUsers={this.props.users}/>)}
+                        </Card.Group>
+                </Grid.Column>
+
+                <Grid.Column>
+                    <h1>MESSAGES SENT:</h1>  
+                        <Card.Group>
+                            {sendingMessages.map(message => 
+                                <MessageCard message={message} allUsers={this.props.users}/>)}
+                        </Card.Group>
+
+                </Grid.Column>
+            </Grid>
         </div>     
         )
       

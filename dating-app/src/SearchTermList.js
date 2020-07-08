@@ -10,6 +10,7 @@ class SearchTermList extends React.Component{
 
 sendTerms=()=>{
   this.props.submitTerms()
+  this.props.selectedLink("matches")
   
 }
 

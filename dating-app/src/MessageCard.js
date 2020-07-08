@@ -8,6 +8,7 @@ class MessageCard extends React.Component{
 
     render(){
       let sender=this.props.allUsers.find(x=> x.id === this.props.message.sender_id)
+      let receiver= this.props.allUsers.find(x=> x.id === this.props.message.user_id)
 
         return(
         <div>
@@ -19,9 +20,9 @@ class MessageCard extends React.Component{
                   size='mini'
                   src={sender.avatar}
                 />
-                <Card.Header>{sender.username}</Card.Header>
+                <Card.Header>From: {sender.username}<br/> To: {receiver.username}</Card.Header>
                 <Card.Description>
-                  <strong>{this.props.message.message}}</strong>
+                  <strong>Message: {this.props.message.message}</strong>
                 </Card.Description>
               </Card.Content>
               <Card.Content extra>
