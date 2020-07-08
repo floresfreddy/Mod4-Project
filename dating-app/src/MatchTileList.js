@@ -19,7 +19,7 @@ class MatchTileList extends React.Component{
                 <br/>
                 <br/>
                 <Card.Group itemsPerRow={3}>
-                    {this.props.users.map(user=> <MatchTileCard user={user}/>)}
+                    {this.props.users.map(user=> <MatchTileCard user={user} allUsers={this.props.users}/>)}
                 </Card.Group>
             </div>
            

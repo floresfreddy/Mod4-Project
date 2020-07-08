@@ -18,7 +18,7 @@ class MatchTileCard extends React.Component{
                         </Card.Description>
                         </Card.Content>
                         <Card.Content extra className="center">
-                            <Messages user={this.props.user}/>
+                            <Messages user={this.props.user} allusers={this.props.allUsers}/>
                             <Button>Delete</Button>
                         </Card.Content>
                     </Card>

@@ -10,6 +10,6 @@ User.destroy_all
 Term.destroy_all
 
 20.times do 
-    user = User.create(username: Faker::Name.name, password_digest: Faker::Code.npi, bio: Faker::Quote.famous_last_words, avatar: '')
+    user = User.create(username: Faker::Name.name, password_digest: Faker::Code.npi, bio: Faker::Quote.famous_last_words, avatar: 'https://react.semantic-ui.com/images/avatar/large/matthew.png')
     Term.create(terms:"", user_id:user.id)
 end 

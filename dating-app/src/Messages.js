@@ -16,6 +16,8 @@ closeConfigShow = (closeOnEscape, closeOnDimmerClick) => () => {
 close = () => this.setState({ open: false })
 
 submitMessage=()=>{
+    // let currentUser= this.props.allusers.filter(function(x) { return x.username === localStorage.getItem("user"); })
+    
     fetch("http://localhost:3000/messages",
     {
     method: "POST",
@@ -25,12 +27,13 @@ submitMessage=()=>{
     body: JSON.stringify({
         message: this.state.message,
         user_id: this.props.user.id,
-        sender_id: "148"
+        sender_id: this.props.allusers.filter(function(x) { return x.username === localStorage.getItem("user")})[0].id
     })
     })
     .then(res => res.json())
     .then(message=> console.log(message), 
-    this.setState({ open: false })) 
+    this.setState({ open: false })
+    ) 
 }
 
 

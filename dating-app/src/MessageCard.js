@@ -4,20 +4,24 @@ import { withRouter } from 'react-router-dom';
 
 class MessageCard extends React.Component{
 
+  
+
     render(){
+      let sender=this.props.allUsers.find(x=> x.id === this.props.message.sender_id)
+
         return(
         <div>
-            
+         
             <Card>
               <Card.Content>
                 <Image
                   floated='right'
                   size='mini'
-                  src='https://react.semantic-ui.com/images/avatar/large/steve.jpg'
+                  src={sender.avatar}
                 />
-                <Card.Header>Steve Sanders</Card.Header>
+                <Card.Header>{sender.username}</Card.Header>
                 <Card.Description>
-                  Steve wants to add you to the group <strong>best friends</strong>
+                  <strong>{this.props.message.message}}</strong>
                 </Card.Description>
               </Card.Content>
               <Card.Content extra>

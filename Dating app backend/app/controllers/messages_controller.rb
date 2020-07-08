@@ -18,6 +18,6 @@ skip_before_action :logged_in?, only: [:create, :index]
 
     private
     def request_params
-        params.require(:message).permit(:message, :id)
+        params.require(:message).permit(:message, :user_id, :sender_id)
     end
 end
