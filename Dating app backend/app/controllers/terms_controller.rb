@@ -8,6 +8,8 @@ class TermsController < ActionController::API
 
       terms = term_params['terms'].join(' ')
 
+      user.terms.destroy_all
+
       term = Term.new(terms: terms, user_id: user.id)
 
       term.save
