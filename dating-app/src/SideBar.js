@@ -53,7 +53,7 @@ searchTerms=()=>{
                 </p>
              
                 <p className="text-center user-description hidden-xs" onClick={this.messages}>
-                    <Icon name="Messages"/>Messages
+                    <Icon name="envelope"/>Messages
                 </p>
 
                 <p className="text-center user-description hidden-xs" onClick={this.logout}>

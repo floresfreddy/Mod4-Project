@@ -1,13 +1,16 @@
 import React from 'react'
-import { Grid, Image, Segment, Label, Button, Card } from 'semantic-ui-react'
+import { Grid, Icon, Card } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
 import MessageCard from "./MessageCard.js"
 
 class MessageList extends React.Component{
 
     state={
-        messages: []
+        messages: [],
+        filteredMessages: []
     }
+
+ 
 
     componentDidMount(){
         fetch("http://localhost:3000/messages",
@@ -23,16 +26,41 @@ class MessageList extends React.Component{
         .then(data => 
           {console.log(data)
             this.setState({
-              messages: data
+              messages: data,
+              filteredMessages: data
             })
           }
         )
     }
 
+    declineMessage=(value)=>{
+        console.log(value)
+        fetch(`http://localhost:3000/messages/${value.id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Authorization": `Bearer ${localStorage.token}`,
+            "Content-type": "application/json", 
+            "Accept": "application/json"
+          }, 
+          body: JSON.stringify({
+              id: value.id 
+          })
+        })
+        .then(res => 
+         this.setState({
+                filteredMessages: this.state.filteredMessages.filter(message => message !== value )
+            })
+        )
+        // this.setState({
+        //    filteredMessages: this.state.filteredMessages.filter(message => message !== value )
+        // })
+    }
+
     render(){
         let currentUser= this.props.users.find(user => user.username===localStorage.getItem("user"))
-        let receivingMessages= this.state.messages.filter(user=> user.user_id === currentUser.id)
-        let sendingMessages= this.state.messages.filter(user=> user.sender_id === currentUser.id)
+        let receivingMessages= this.state.filteredMessages.filter(user=> user.user_id === currentUser.id)
+        let sendingMessages= this.state.filteredMessages.filter(user=> user.sender_id === currentUser.id)
         if (receivingMessages === null){
             return(
                 <h1>No Current Messages Received</h1>
@@ -44,18 +72,20 @@ class MessageList extends React.Component{
             <br/>
             <Grid columns={2} relaxed='very' stackable>
                 <Grid.Column >
-                    <h1>MESSAGES RECEIVED:</h1>
+                    <h1>Messages Received:</h1>
+                    <br/>
                         <Card.Group>
                             {receivingMessages.map(message => 
-                                <MessageCard message={message} allUsers={this.props.users}/>)}
+                                <MessageCard decline={this.declineMessage} message={message} allUsers={this.props.users}/> )}
                         </Card.Group>
                 </Grid.Column>
 
                 <Grid.Column>
-                    <h1>MESSAGES SENT:</h1>  
+                    <h1>Messages Sent:</h1>  
+                    <br/>
                         <Card.Group>
                             {sendingMessages.map(message => 
-                                <MessageCard message={message} allUsers={this.props.users}/>)}
+                                <MessageCard decline={this.declineMessage} message={message} allUsers={this.props.users}/>)}
                         </Card.Group>
 
                 </Grid.Column>

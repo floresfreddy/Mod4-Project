@@ -4,7 +4,9 @@ import { withRouter } from 'react-router-dom';
 
 class MessageCard extends React.Component{
 
-  
+  decline=()=>{
+    this.props.decline(this.props.message)
+  }
 
     render(){
       let sender=this.props.allUsers.find(x=> x.id === this.props.message.sender_id)
@@ -30,12 +32,14 @@ class MessageCard extends React.Component{
                   <Button basic color='grey'>
                     Reply
                   </Button>
-                  <Button basic color='grey'>
+                  <Button onClick={this.decline} basic color='grey'>
                     Decline
                   </Button>
                 </div>
               </Card.Content>
             </Card>
+            <br/>
+           
            
  
         </div>     

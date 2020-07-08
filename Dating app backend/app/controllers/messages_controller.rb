@@ -16,8 +16,14 @@ skip_before_action :logged_in?, only: [:create, :index]
         end
     end 
 
+    def destroy 
+        message=Message.find(params[:id])
+        message.destroy 
+        
+    end 
+
     private
-    def request_params
+    def message_params
         params.require(:message).permit(:message, :user_id, :sender_id)
     end
 end
