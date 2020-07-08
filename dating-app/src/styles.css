@@ -71,10 +71,8 @@ html, body, .sidebar-nav, .content-posts {
     float: left;
 }
 
-.center{
-    display: block;
-    margin-left: auto;
-    margin-right: auto; 
+.center {
+    text-align: center;
 }
 
 .icon_nav{
