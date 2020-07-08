@@ -92,7 +92,7 @@ class Form extends React.Component {
                   Download your history using this extension</Step.Title>
                   <Step.Description>
                     <br/>
-                    <a href='https://chrome.google.com/webstore/detail/history-export/lpmoaclacdaofhlijejogfldmgkdlglj'>DOWNLOAD EXTENSION</a>
+                    <a target="_blank" href='https://chrome.google.com/webstore/detail/history-export/lpmoaclacdaofhlijejogfldmgkdlglj'>DOWNLOAD EXTENSION</a>
                   <br/>
                   <br></br>
                   </Step.Description>
