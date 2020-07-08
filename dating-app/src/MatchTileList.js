@@ -12,12 +12,12 @@ class MatchTileList extends React.Component{
     deleteMatch=(deletedUser)=>{
         if(!this.state.filteredlist){
             this.setState({
-                filteredlist: this.props.users.filter(user=> user !== deletedUser)
+                filteredlist: this.props.users.slice(0,9).filter(user=> user !== deletedUser)
             })
         }
         else{
             this.setState({
-                filteredlist: this.state.filteredlist.filter(user=> user !== deletedUser)
+                filteredlist: this.state.filteredlist.slice(0,9).filter(user=> user !== deletedUser)
             })
         }
     }
@@ -35,7 +35,7 @@ class MatchTileList extends React.Component{
                 <br/>
                 <br/>
                 <Card.Group itemsPerRow={3}>
-                    {this.props.users.map(user=> <MatchTileCard user={user} allUsers={this.props.users} deleteMatch={this.deleteMatch}/>)}
+                    {this.props.users.slice(0,10).map(user=> <MatchTileCard user={user} allUsers={this.props.users} deleteMatch={this.deleteMatch}/>)}
                 </Card.Group>
             </div>
            
@@ -47,7 +47,7 @@ class MatchTileList extends React.Component{
                 <br/>
                 <br/>
                 <Card.Group itemsPerRow={3}>
-                    {this.state.filteredlist.map(user=> <MatchTileCard user={user} allUsers={this.props.users} deleteMatch={this.deleteMatch}/>)}
+                    {this.state.filteredlist.slice(0,10).map(user=> <MatchTileCard user={user} allUsers={this.props.users} deleteMatch={this.deleteMatch}/>)}
                 </Card.Group>
             </div>
             )
