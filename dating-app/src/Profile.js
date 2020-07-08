@@ -1,6 +1,6 @@
 import React from 'react';
-import Form from './Form.js';
-import Matches from './Matches.js'
+// import Form from './Form.js';
+// import Matches from './Matches.js'
 import NavBar from './NavBar.js'
 import MainContainer from './MainContainer.js'
 import { withRouter } from 'react-router-dom';

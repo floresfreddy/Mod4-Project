@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card} from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
 import MatchTileCard from './MatchTileCard.js'
 

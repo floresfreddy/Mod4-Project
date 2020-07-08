@@ -78,7 +78,7 @@ class MainContainer extends React.Component {
         case 'matches': 
           return <MatchTileList users={this.state.matchedUsers} />
         case 'searchTerms': 
-          return <SearchTermList terms={this.state.filteredTerms} submitTerms={this.submitTerms} filter={this.filter}/>
+          return <SearchTermList terms={this.state.filteredTerms} submitTerms={this.submitTerms} filter={this.filter} selectedLink={this.props.selectedLink}/>
         default: 
           return null; 
       }

@@ -10,6 +10,7 @@ class SearchTermList extends React.Component{
 
 sendTerms=()=>{
   this.props.submitTerms()
+  this.props.selectedLink("matches")
   
 }
 
@@ -21,7 +22,7 @@ render(){
     <br/>
     <br/>
     <h1>My Search Words</h1>
-      <p>Choose up to 10 Search Words to get Matched. Click on the words you would like to delete:</p>
+      <p>To get matched with new friends, click on the words you would like to delete:</p>
       <Button onClick={this.sendTerms}>Submit Your Search Words</Button>
       <br/> 
       <br/> 
