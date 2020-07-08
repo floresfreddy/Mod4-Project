@@ -2,11 +2,9 @@ import React from 'react'
 import './styles.css'
 import { Icon } from 'semantic-ui-react'
 
-function NavBar(){
+function NavBar(props){
 
-    // let logout = () => {
-    //     localStorage.clear()
-    // }
+    
     
     return(
         // <div className="nav"> 

@@ -28,6 +28,10 @@ searchTerms=()=>{
     this.props.selectedLink("searchTerms")
  }
 
+ messages=()=>{
+    this.props.selectedLink("messages")
+ }
+
   render() {
     return(
         <div>

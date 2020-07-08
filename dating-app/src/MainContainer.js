@@ -32,6 +32,8 @@ class MainContainer extends React.Component {
       switch(param) {
         case 'match':
           return <Form setTerms={this.setTermsList} selectedLink={this.props.selectedLink}/>
+        case 'messages':
+          return <h1>Messages go here</h1>
         case 'matches': 
           return <MatchTileList users={this.props.users}/>
         case 'searchTerms': 
