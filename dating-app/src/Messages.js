@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Header, Image, TextArea, Modal, Segment, Form } from 'semantic-ui-react'
+import { Button, Header, TextArea, Modal, Segment, Form } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
 
 class Messages extends React.Component{

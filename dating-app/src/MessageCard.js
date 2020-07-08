@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Image, Segment, Label, Button, Card } from 'semantic-ui-react'
+import { Image, Button, Card } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
 
 class MessageCard extends React.Component{

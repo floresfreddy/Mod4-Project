@@ -1,5 +1,5 @@
 import React from 'react'
-import { Grid, Icon, Card } from 'semantic-ui-react'
+import { Grid, Card } from 'semantic-ui-react'
 import { withRouter } from 'react-router-dom';
 import MessageCard from "./MessageCard.js"
 
@@ -76,7 +76,7 @@ class MessageList extends React.Component{
                     <br/>
                         <Card.Group>
                             {receivingMessages.map(message => 
-                                <MessageCard decline={this.declineMessage} message={message} allUsers={this.props.users}/> )}
+                                <MessageCard decline={this.declineMessage} key={message} message={message} allUsers={this.props.users}/> )}
                         </Card.Group>
                 </Grid.Column>
 
@@ -85,7 +85,7 @@ class MessageList extends React.Component{
                     <br/>
                         <Card.Group>
                             {sendingMessages.map(message => 
-                                <MessageCard decline={this.declineMessage} message={message} allUsers={this.props.users}/>)}
+                                <MessageCard decline={this.declineMessage} key={message.id} message={message} allUsers={this.props.users}/>)}
                         </Card.Group>
 
                 </Grid.Column>
