@@ -77,7 +77,7 @@ class Form extends React.Component {
     return(
       <div 
       style={{
-        position: 'absolute', left: '50%', top: '45%',
+        position: 'absolute', left: '50%', top: '40%',
         transform: 'translate(-50%, -50%)'
     }}
     >

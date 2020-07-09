@@ -37626,3 +37626,119 @@ Processing by Api::V1::UsersController#index as JSON
 Completed 200 OK in 370ms (Views: 217.6ms | ActiveRecord: 151.1ms | Allocations: 58041)
 
 
+Started GET "/messages" for ::1 at 2020-07-09 00:07:02 -0500
+Processing by MessagesController#index as JSON
+  Parameters: {"message"=>{}}
+  [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages"[0m
+  ↳ app/controllers/messages_controller.rb:6:in `index'
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 0.6ms | Allocations: 5536)
+
+
+Started POST "/api/v1/login" for ::1 at 2020-07-09 00:07:48 -0500
+Processing by Api::V1::AuthController#create as */*
+  Parameters: {"username"=>"Stephanie", "password"=>"[FILTERED]", "auth"=>{"username"=>"Stephanie", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Stephanie"], ["LIMIT", 1]]
+  ↳ app/controllers/api/v1/auth_controller.rb:7:in `create'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 256ms (Views: 0.5ms | ActiveRecord: 0.2ms | Allocations: 890)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-07-09 00:07:48 -0500
+Processing by Api::V1::UsersController#index as JSON
+  Parameters: {"user"=>{}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 321], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:18:in `logged_in?'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.2ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 301]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 301]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.8ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 302]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.4ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 302]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (1.0ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 303]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.5ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 303]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.4ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 304]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (1.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 304]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.5ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 305]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 305]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.2ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 306]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 306]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.2ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 307]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 307]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.3ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 308]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 308]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.3ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 309]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (1.0ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 309]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.2ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 310]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 310]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.2ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 311]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 311]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.2ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 312]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 312]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.2ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 313]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.6ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 313]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.3ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 314]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 314]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.8ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 315]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 315]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.2ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 316]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 316]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.2ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 317]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 317]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.4ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 318]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 318]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.2ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 319]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.3ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 319]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.2ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 320]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 320]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.2ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 321]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 321]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mTerm Load (0.7ms)[0m  [1m[34mSELECT "terms".* FROM "terms" WHERE "terms"."user_id" = $1[0m  [["user_id", 322]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers]   [1m[36mMessage Load (0.2ms)[0m  [1m[34mSELECT "messages".* FROM "messages" WHERE "messages"."user_id" = $1[0m  [["user_id", 322]]
+[active_model_serializers]   ↳ app/controllers/api/v1/users_controller.rb:20:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (97.87ms)
+Completed 200 OK in 103ms (Views: 85.1ms | ActiveRecord: 16.8ms | Allocations: 58037)
+
+
