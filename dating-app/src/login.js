@@ -52,11 +52,11 @@ class Login extends Component{
         <div className="Login_Div bg-img">
             
         <Grid centered columns={2}>
-            <Grid.Column>
+            <Grid.Column style={{position: 'absolute', left: '35%'}}>
                     <img className="logo" alt="logo" src={require('./logo.png')}></img>
               
-            <Segment>
-                <Form size="large" onSubmit={(e) => this.logIn(e)}>
+            <Segment style={{width: '500px'}}>
+                <Form size="large" onSubmit={(e) => this.logIn(e)} >
                     <Form.Input
                         fluid
                         icon="user"
@@ -79,19 +79,19 @@ class Login extends Component{
                     </Button>
                 </Form>
             
-            </Segment>
-            <Message>
-                Not registered yet? 
-                <NavLink
-                to="/signup"
-                exact
-                
-                activeStyle={{
-                    background: 'darkblue'
-                }}
-                > Signup</NavLink>
-            </Message>
+                <Message>
+                    Not registered yet? 
+                    <NavLink
+                    to="/signup"
+                    exact
+                    
+                    activeStyle={{
+                        background: 'darkblue'
+                    }}
+                    > Signup</NavLink>
+                </Message>
             
+            </Segment>
             
             </Grid.Column>
         </Grid>
