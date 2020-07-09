@@ -27,7 +27,11 @@ class MatchTileList extends React.Component{
         if(!this.state.filteredlist){
         if (this.props.users.length === 0){
             return (
-                <h1>No Current Matches</h1>
+                <div>
+                    <h1>No Current Matches</h1>
+                    <p>Please go to "Get Matched" section to submit your search terms.</p>
+                </div>
+                
             )
         }
         let otherUsers=this.props.users.filter(function(x) { return x.username !== localStorage.getItem("user")})

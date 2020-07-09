@@ -1,6 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom';
-import { Message } from 'semantic-ui-react'
+import { Message, List } from 'semantic-ui-react'
 
 class SearchTermCard extends React.Component{
 
@@ -10,9 +10,11 @@ class SearchTermCard extends React.Component{
 
 render(){
     return(
+      <List.Item>
           <Message color='teal' key='teal' size='large' onClick={this.filter}>
              {this.props.term}
           </Message>
+      </List.Item>
   
 )}
 }

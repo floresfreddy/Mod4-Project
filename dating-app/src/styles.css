@@ -74,9 +74,13 @@ html, body, .sidebar-nav, .content-posts {
 
 .center {
     margin: 0;
-    position: absolute;
-    top: 10%;
+    position: relative;
+    /* top: 10%; */
     left: 40%;
+}
+
+.center_message {
+    text-align: center; 
 }
 
 .center_grid {

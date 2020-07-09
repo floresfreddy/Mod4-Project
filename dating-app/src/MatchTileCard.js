@@ -22,7 +22,7 @@ class MatchTileCard extends React.Component{
                             {this.props.user.bio}
                         </Card.Description>
                         </Card.Content>
-                        <Card.Content extra className="center">
+                        <Card.Content extra className="center_message">
                             <Messages user={this.props.user} allusers={this.props.allUsers}/>
                             <Button onClick={(e)=> this.delete()}>Delete</Button>
                         </Card.Content>
