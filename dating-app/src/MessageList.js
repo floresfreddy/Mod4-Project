@@ -79,9 +79,7 @@ class MessageList extends React.Component{
                                 <MessageCard decline={this.declineMessage} key={message} message={message} allUsers={this.props.users}/> )}
                         </Card.Group>
                 </Grid.Column>
-                <Grid.Column>
-
-                </Grid.Column>
+                
                 <Grid.Column>
                     <h1>Messages Sent:</h1>  
                     <br/>

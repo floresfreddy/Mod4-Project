@@ -27,13 +27,13 @@ render(){
   <div>
     <h1>My Search Words</h1>
       <p>To get matched with new friends, click on the words you would like to delete:</p>
-      
+      <Button className="center" onClick={this.sendTerms}>Submit Your Search Words</Button>
       <br/> 
       <br/> 
       <List horizontal relaxed size="large">
         {this.props.terms.map(term => <SearchTermCard term={term} key={term} filter={this.props.filter}/>)}
       </List>
-      <Button className="center" onClick={this.sendTerms}>Submit Your Search Words</Button>
+      
   </div>
 )}
 }
