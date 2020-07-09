@@ -70,7 +70,7 @@ class MessageList extends React.Component{
         <div>
             <br/>
             <br/>
-            <Grid columns={2} relaxed='very' stackable>
+            <Grid columns={3} stackable className="center_grid">
                 <Grid.Column >
                     <h1>Messages Received:</h1>
                     <br/>
@@ -79,7 +79,9 @@ class MessageList extends React.Component{
                                 <MessageCard decline={this.declineMessage} key={message} message={message} allUsers={this.props.users}/> )}
                         </Card.Group>
                 </Grid.Column>
+                <Grid.Column>
 
+                </Grid.Column>
                 <Grid.Column>
                     <h1>Messages Sent:</h1>  
                     <br/>

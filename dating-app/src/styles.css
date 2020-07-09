@@ -72,7 +72,17 @@ html, body, .sidebar-nav, .content-posts {
 }
 
 .center {
-    text-align: center;
+    margin: 0;
+    position: absolute;
+    top: 10%;
+    left: 40%;
+}
+
+.center_grid {
+    margin: 0;
+    position: absolute;
+    top: 10%;
+    left: 30%
 }
 
 .icon_nav{

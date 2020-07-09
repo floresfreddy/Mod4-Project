@@ -75,10 +75,12 @@ class Form extends React.Component {
 
   render() {
     return(
-      <div style={{
+      <div 
+      style={{
         position: 'absolute', left: '50%', top: '50%',
         transform: 'translate(-50%, -50%)'
-    }}>
+    }}
+    >
         <img alt="logo" src={require('./dating.jpg')}></img>
         <br/>
         <br/>
@@ -89,7 +91,7 @@ class Form extends React.Component {
                 <Step.Title>STEP 1: 
                   <br/>
                   <br/>
-                  Download your history using this extension</Step.Title>
+                  Download your history using this extension:</Step.Title>
                   <Step.Description>
                     <br/>
                     <a target="_blank" href='https://chrome.google.com/webstore/detail/history-export/lpmoaclacdaofhlijejogfldmgkdlglj'>DOWNLOAD EXTENSION</a>
@@ -105,7 +107,7 @@ class Form extends React.Component {
                 <Step.Title>STEP 2: 
                   <br/>
                   <br/>
-                  Upload your file here</Step.Title>
+                  Upload your file here:</Step.Title>
                 <br/>
                   <Step.Description>
                     <input type='file' onChange={this.onFileChange}/>

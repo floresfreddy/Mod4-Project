@@ -24,7 +24,9 @@ class MessageCard extends React.Component{
                 />
                 <Card.Header>From: {sender.username}<br/> To: {receiver.username}</Card.Header>
                 <Card.Description>
-                  <strong>Message: {this.props.message.message}</strong>
+                  <strong>Message: 
+                    <br/>
+                    {this.props.message.message}</strong>
                 </Card.Description>
               </Card.Content>
               <Card.Content extra>

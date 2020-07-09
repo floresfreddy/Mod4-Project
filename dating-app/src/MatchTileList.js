@@ -30,12 +30,13 @@ class MatchTileList extends React.Component{
                 <h1>No Current Matches</h1>
             )
         }
+        let otherUsers=this.props.users.filter(function(x) { return x.username !== localStorage.getItem("user")})
         return(
             <div>
                 <br/>
                 <br/>
                 <Card.Group itemsPerRow={3}>
-                    {this.props.users.slice(0,10).map(user=> <MatchTileCard user={user} allUsers={this.props.users} deleteMatch={this.deleteMatch}/>)}
+                    {otherUsers.slice(0,10).map(user=> <MatchTileCard user={user} allUsers={this.props.users} deleteMatch={this.deleteMatch}/>)}
                 </Card.Group>
             </div>
            

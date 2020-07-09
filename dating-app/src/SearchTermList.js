@@ -16,11 +16,7 @@ sendTerms=()=>{
 
 render(){
     return(
-  <div style={{
-    position: 'relative', left: '50%', top: '50%'
-}}>
-    <br/>
-    <br/>
+  <div className="center">
     <h1>My Search Words</h1>
       <p>To get matched with new friends, click on the words you would like to delete:</p>
       <Button onClick={this.sendTerms}>Submit Your Search Words</Button>
