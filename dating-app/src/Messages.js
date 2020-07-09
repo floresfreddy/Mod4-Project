@@ -45,7 +45,7 @@ handleChange = (e) => {
 }
 
 render(){
-    const { open, closeOnEscape, closeOnDimmerClick } = this.state
+    const { open, closeOnEscape} = this.state
     return(
         <Modal dimmer="blurring" size="small" trigger={<Button onClick={this.closeConfigShow(true, false)}>Message</Button>} style={{
             position: 'absolute', left: '60%', top: '50%',
@@ -54,7 +54,6 @@ render(){
             }}
             open={open}
             closeOnEscape={closeOnEscape}
-            closeOnDimmerClick={closeOnDimmerClick}
             onClose={this.close}>
         <Modal.Header></Modal.Header>
             <Modal.Content>

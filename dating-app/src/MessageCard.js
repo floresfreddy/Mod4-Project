@@ -31,6 +31,7 @@ class MessageCard extends React.Component{
               </Card.Content>
               <Card.Content extra>
                 <div className='ui two buttons'>
+                 
                   <Button basic color='grey'>
                     Reply
                   </Button>

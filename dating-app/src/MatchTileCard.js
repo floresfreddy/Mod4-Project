@@ -14,7 +14,7 @@ class MatchTileCard extends React.Component{
         return(
             <div>
                 <br/>
-                    <Card>
+                    <Card style={{height: "440px"}}>
                         <Image src={this.props.user.avatar} wrapped ui={false} />
                         <Card.Content>
                         <Card.Header>{this.props.user.username}</Card.Header>

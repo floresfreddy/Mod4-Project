@@ -77,14 +77,14 @@ class Form extends React.Component {
     return(
       <div 
       style={{
-        position: 'absolute', left: '50%', top: '50%',
+        position: 'absolute', left: '50%', top: '45%',
         transform: 'translate(-50%, -50%)'
     }}
     >
         <img alt="logo" src={require('./dating.jpg')}></img>
         <br/>
         <br/>
-          <Step.Group>
+          <Step.Group style={{position: 'absolute', left: '8%'}}>
             <Step>
               <Icon name='download' />
               <Step.Content>
